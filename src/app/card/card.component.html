@@ -1,0 +1,68 @@
+<div id="card-render">
+  <div class="border-wrapper">
+    <div class="head"><p>{{name}}</p></div>
+    <div class="body" appDrag (files)="filesDropped($event)">
+      <div class="top">
+        <div class="aspect-list" *ngFor="let aspect of aspects">
+          <p *ngIf="aspect.length">{{aspect}}</p>
+        </div>
+        <div class="divider"></div>
+        <div class="stunt-list" *ngFor="let stunt of stunts">
+          <div class="stunt" *ngIf="stunt.name || stunt.description">
+            <p>
+              <span class="name">{{stunt.name}}.</span>
+              <span>{{stunt.description}}.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="skills">
+          <div class="skill-list left">
+            <p>
+              <span class="name">{{skills[0].name || "&nbsp;"}}</span>
+              <span class="value">{{skills[0].value || " "}}</span>
+            </p>
+            <p>
+              <span class="name">{{skills[2].name || "&nbsp;"}}</span>
+              <span class="value">{{skills[2].value || " "}}</span>
+            </p>
+            <p>
+              <span class="name">{{skills[4].name || "&nbsp;"}}</span>
+              <span class="value">{{skills[4].value || " "}}</span>
+            </p>
+          </div>
+          <div class="separator"></div>
+          <div class="skill-list right">
+            <p>
+              <span class="name">{{skills[1].name || "&nbsp;"}}</span>
+              <span class="value">{{skills[1].value || " "}}</span>
+            </p>
+            <p>
+              <span class="name">{{skills[3].name || "&nbsp;"}}</span>
+              <span class="value">{{skills[3].value || " "}}</span>
+            </p>
+            <p>
+              <span class="name">{{skills[5].name || "&nbsp;"}}</span>
+              <span class="value">{{skills[5].value || " "}}</span>
+            </p>
+          </div>
+        </div>
+        <div class="foot-info">
+          <div class="stress">
+            <span>Стресс</span>&nbsp;
+            <span>У:</span>&nbsp;
+            <span class="red">{{stress.universal}}</span>&nbsp;
+            <span *ngIf="stress.physical">Ф:&nbsp;</span>
+            <span class="red" *ngIf="stress.physical">{{stress.physical}} &nbsp;</span>
+            <span *ngIf="stress.mental">М:&nbsp;</span>
+            <span class="red" *ngIf="stress.mental">{{stress.mental}}</span>
+          </div>
+          <div class="PP">
+            <span>ПС:</span>&nbsp;<span class="red">{{PP}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
