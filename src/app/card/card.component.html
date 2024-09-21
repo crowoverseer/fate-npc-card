@@ -1,6 +1,6 @@
 <div id="card-render">
   <div class="border-wrapper">
-    <div class="head"><p>{{name}}</p></div>
+    <div class="head"><p [style.font-size]="fontSizes.name + 'px'">{{name}}</p></div>
     <div class="body" appDrag (files)="filesDropped($event)">
       <div class="top">
         <div class="aspect-list" *ngFor="let aspect of aspects">
@@ -9,7 +9,7 @@
         <div class="divider"></div>
         <div class="stunt-list" *ngFor="let stunt of stunts">
           <div class="stunt" *ngIf="stunt.name || stunt.description">
-            <p>
+            <p [style.font-size]="fontSizes.stunt + 'px'">
               <span class="name">{{stunt.name}}.</span>
               <span>{{stunt.description}}.</span>
             </p>

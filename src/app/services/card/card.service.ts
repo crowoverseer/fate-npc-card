@@ -17,8 +17,14 @@ export interface Stress {
   mental: string;
 }
 
+export interface FontSizes {
+  name: number;
+  stunt: number;
+}
+
 interface Serialized {
   name: string;
+  fontSizes: FontSizes;
   aspects: string[];
   stunts: Stunt[];
   skills: Skill[];
@@ -31,6 +37,10 @@ interface Serialized {
 })
 export class CardService {
   private nameSubject = new BehaviorSubject<string>('');
+  private fontSizesSubject = new BehaviorSubject<FontSizes>({
+    name: 100,
+    stunt: 40,
+  });
   private aspectsSubject = new BehaviorSubject<string[]>(
     new Array<string>(5).fill('')
   );
@@ -48,6 +58,7 @@ export class CardService {
   private PPSubject = new BehaviorSubject<number>(3);
 
   name = this.nameSubject.asObservable();
+  fontSizes = this.fontSizesSubject.asObservable();
   aspects = this.aspectsSubject.asObservable();
   stunts = this.stuntsSubject.asObservable();
   skills = this.skillSubject.asObservable();
@@ -56,15 +67,22 @@ export class CardService {
 
   constructor() {
     const data: Serialized = JSON.parse(
-      window.localStorage.getItem('json') || ''
+      window.localStorage.getItem('json') || '{}'
     );
-    if (data) {
+    if (data?.name) {
       this.loadFromData(data);
     }
   }
 
   setName(message: string) {
     this.nameSubject.next(message);
+  }
+
+  setFontSize(type: keyof FontSizes, value: number) {
+    if (!value) return;
+    const currentFontSizes = this.fontSizesSubject.value;
+    currentFontSizes[type] = value;
+    this.fontSizesSubject.next(currentFontSizes);
   }
 
   setAspect(idx: number, value: string) {
@@ -111,6 +129,7 @@ export class CardService {
   save() {
     const json = {
       name: this.nameSubject.value,
+      fontSizes: this.fontSizesSubject.value,
       aspects: this.aspectsSubject.value,
       stunts: this.stuntsSubject.value,
       stress: this.stressSubject.value,
@@ -127,8 +146,17 @@ export class CardService {
     a.click();
   }
 
-  loadFromData({ name, aspects, stress, skills, stunts, PP }: Serialized) {
+  loadFromData({
+    name,
+    fontSizes,
+    aspects,
+    stress,
+    skills,
+    stunts,
+    PP,
+  }: Serialized) {
     this.nameSubject.next(name);
+    this.fontSizesSubject.next(fontSizes);
     this.aspectsSubject.next(aspects);
     this.stressSubject.next(stress);
     this.skillSubject.next(skills);
@@ -140,6 +168,10 @@ export class CardService {
     if (window.confirm('Или потеряешь!')) {
       this.loadFromData({
         name: '',
+        fontSizes: {
+          name: 100,
+          stunt: 40,
+        },
         aspects: new Array<string>(5).fill(''),
         stunts: Array.from({ length: 5 }, () => ({
           name: '',

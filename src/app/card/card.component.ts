@@ -4,6 +4,7 @@ import { DragDirective, FileHandle } from './dragDrop.directive';
 
 import {
   CardService,
+  FontSizes,
   Skill,
   Stress,
   Stunt,
@@ -18,6 +19,7 @@ import {
 })
 export class CardComponent {
   name!: string;
+  fontSizes!: FontSizes;
   aspects!: string[];
   stunts!: Stunt[];
   skills!: Skill[];
@@ -27,6 +29,9 @@ export class CardComponent {
   constructor(private cardService: CardService) {
     this.cardService.name.subscribe((name) => {
       this.name = name;
+    });
+    this.cardService.fontSizes.subscribe((fontSizes) => {
+      this.fontSizes = fontSizes;
     });
     this.cardService.aspects.subscribe((aspects) => {
       this.aspects = aspects;

@@ -5,6 +5,7 @@ import html2canvas from 'html2canvas';
 
 import {
   CardService,
+  FontSizes,
   Skill,
   Stress,
   Stunt,
@@ -19,6 +20,7 @@ import {
 })
 export class CardformComponent {
   name!: string;
+  fontSizes!: FontSizes;
   aspects!: string[];
   stunts!: Stunt[];
   skills!: Skill[];
@@ -28,6 +30,9 @@ export class CardformComponent {
   constructor(public cardService: CardService) {
     this.cardService.name.subscribe((name) => {
       this.name = name;
+    });
+    this.cardService.fontSizes.subscribe((fontSizes) => {
+      this.fontSizes = fontSizes;
     });
     this.cardService.aspects.subscribe((aspects) => {
       this.aspects = aspects;
