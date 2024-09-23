@@ -38,8 +38,8 @@ interface Serialized {
 export class CardService {
   private nameSubject = new BehaviorSubject<string>('');
   private fontSizesSubject = new BehaviorSubject<FontSizes>({
-    name: 100,
-    stunt: 40,
+    name: 50,
+    stunt: 20,
   });
   private aspectsSubject = new BehaviorSubject<string[]>(
     new Array<string>(5).fill('')
@@ -148,7 +148,7 @@ export class CardService {
 
   loadFromData({
     name,
-    fontSizes,
+    fontSizes = this.fontSizesSubject.value,
     aspects,
     stress,
     skills,
