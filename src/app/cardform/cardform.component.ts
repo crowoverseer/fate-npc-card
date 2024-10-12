@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import html2canvas from 'html2canvas';
+import { toPng } from 'html-to-image';
 
 import {
   CardService,
@@ -49,17 +48,20 @@ export class CardformComponent {
 
   render() {
     console.log('Rendering');
-    html2canvas(document.getElementById('card-render')!).then((canvas) => {
-      const removeObj = document.body.appendChild(canvas);
-      const imgData = canvas.toDataURL('image/png');
-      const link = document.createElement('a');
-      link.href = imgData;
-      link.download = `${this.name}.png`;
-      link.click();
-      setTimeout(() => {
-        document.body.removeChild(removeObj);
-        document.removeChild(link);
-      }, 200);
-    });
+    var card = document.getElementById('card-render');
+    if (!card) return;
+    toPng(card)
+      .then((dataUrl) => {
+        const link = document.createElement('a');
+        link.href = dataUrl;
+        link.download = `${this.name}.png`;
+        link.click();
+        setTimeout(() => {
+          document.removeChild(link);
+        }, 200);
+      })
+      .catch((error) => {
+        console.error('oops, something went wrong!', error);
+      });
   }
 }
