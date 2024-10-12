@@ -27,6 +27,7 @@ export class CardComponent {
   skills!: Skill[];
   stress!: Stress;
   PP!: number;
+  showAllStress: boolean = false;
 
   constructor(public cardService: CardService) {
     this.cardService.name.subscribe((name) => {
@@ -50,6 +51,10 @@ export class CardComponent {
     this.cardService.PP.subscribe((PP) => {
       this.PP = PP;
     });
+  }
+
+  setShowAllStress(value: boolean) {
+    this.showAllStress = value;
   }
 
   filesDropped(files: any): void {

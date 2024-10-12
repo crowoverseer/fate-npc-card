@@ -3,24 +3,6 @@
   <input placeholder="40" value={{fontSizes.stunt}} (keyup)="cardService.setFontSize('stunt', $any($event).target.value)" />
 </div>
 <hr />
-<!-- <div *ngFor="let idx of [0,1,2,3,4]" class="stunt-line">
-  <input placeholder="Трюк {{idx + 1}}" value={{stunts[idx].name}} (keyup)="cardService.setStuntName(idx, $any($event).target.value)" />
-  <textarea placeholder="Описание" (keyup)="cardService.setStuntDescr(idx, $any($event).target.value)">{{stunts[idx].description}}</textarea>
-</div>
-<hr /> -->
-<div class="skills">
-  <div class="skill-line" *ngFor="let idx of [0,1,2,3,4,5]">
-    <input placeholder="Навык" value={{skills[idx].name}} (keyup)="cardService.setSkillName(idx, $any($event).target.value)" />
-    <input class="number" placeholder="2" value={{skills[idx].value}} (keyup)="cardService.setSkillValue(idx, $any($event).target.value)" />
-  </div>
-</div>
-<hr />
-<div class="foot">
-  <input placeholder="Стресс У" value={{stress.universal}} (keyup)="cardService.setStressValue('universal', $any($event).target.value)" />
-  <input placeholder="Стресс Ф" value={{stress.physical}} (keyup)="cardService.setStressValue('physical', $any($event).target.value)" />
-  <input placeholder="Стресс М" value={{stress.mental}} (keyup)="cardService.setStressValue('mental', $any($event).target.value)" />
-  <input placeholder="ПС" value={{PP}} (keyup)="cardService.setPP($any($event).target.value)" />
-</div>
 <div class="buttons">
   <button (click)="this.cardService.save()">Сохранить</button>
   <button (click)="render()">Рендер</button>

@@ -93,6 +93,13 @@ $red: #c22f25
                 display: flex
                 flex-direction: row
                 justify-content: space-between
+                span
+                  &.name
+                    min-width: 100px
+                  &.value
+                    min-width: 10px
+                  &:hover
+                    outline: 1px solid black
             .separator
               background: black
               width: 3px
@@ -102,6 +109,14 @@ $red: #c22f25
             display: flex
             flex-direction: row
             justify-content: space-between
+            .stress
+              display: flex
+              flex-direction: row
+              span
+                min-width: 10px
+                &.red
+                  &:hover
+                    outline: 1px solid black
 .red
   color: $red
   -webkit-text-stroke: 1px $red

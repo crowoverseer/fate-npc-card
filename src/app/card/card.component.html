@@ -33,46 +33,54 @@
         <div class="skills">
           <div class="skill-list left">
             <p>
-              <span class="name">{{skills[0].name || "&nbsp;"}}</span>
-              <span class="value">{{skills[0].value || " "}}</span>
+              <span class="name" contenteditable="true" (blur)="cardService.setSkillName(0, $any($event).target.innerText)" *mcRerender="skills[0].name">{{skills[0].name || "&nbsp;"}}</span>
+              <span class="value" contenteditable="true" (blur)="cardService.setSkillValue(0, $any($event).target.innerText)" *mcRerender="skills[0].value">{{skills[0].value || " "}}</span>
             </p>
             <p>
-              <span class="name">{{skills[2].name || "&nbsp;"}}</span>
-              <span class="value">{{skills[2].value || " "}}</span>
+              <span class="name" contenteditable="true" (blur)="cardService.setSkillName(2, $any($event).target.innerText)" *mcRerender="skills[2].name">{{skills[2].name || "&nbsp;"}}</span>
+              <span class="value" contenteditable="true" (blur)="cardService.setSkillValue(2, $any($event).target.innerText)" *mcRerender="skills[2].value">{{skills[2].value || " "}}</span>
             </p>
             <p>
-              <span class="name">{{skills[4].name || "&nbsp;"}}</span>
-              <span class="value">{{skills[4].value || " "}}</span>
+              <span class="name" contenteditable="true" (blur)="cardService.setSkillName(4, $any($event).target.innerText)" *mcRerender="skills[4].name">{{skills[4].name || "&nbsp;"}}</span>
+              <span class="value" contenteditable="true" (blur)="cardService.setSkillValue(4, $any($event).target.innerText)" *mcRerender="skills[4].value">{{skills[4].value || " "}}</span>
             </p>
           </div>
           <div class="separator"></div>
           <div class="skill-list right">
             <p>
-              <span class="name">{{skills[1].name || "&nbsp;"}}</span>
-              <span class="value">{{skills[1].value || " "}}</span>
+              <span class="name" contenteditable="true" (blur)="cardService.setSkillName(1, $any($event).target.innerText)" *mcRerender="skills[1].name">{{skills[1].name || "&nbsp;"}}</span>
+              <span class="value" contenteditable="true" (blur)="cardService.setSkillValue(1, $any($event).target.innerText)" *mcRerender="skills[1].value">{{skills[1].value || " "}}</span>
             </p>
             <p>
-              <span class="name">{{skills[3].name || "&nbsp;"}}</span>
-              <span class="value">{{skills[3].value || " "}}</span>
+              <span class="name" contenteditable="true" (blur)="cardService.setSkillName(3, $any($event).target.innerText)" *mcRerender="skills[3].name">{{skills[3].name || "&nbsp;"}}</span>
+              <span class="value" contenteditable="true" (blur)="cardService.setSkillValue(3, $any($event).target.innerText)" *mcRerender="skills[3].value">{{skills[3].value || " "}}</span>
             </p>
             <p>
-              <span class="name">{{skills[5].name || "&nbsp;"}}</span>
-              <span class="value">{{skills[5].value || " "}}</span>
+              <span class="name" contenteditable="true" (blur)="cardService.setSkillName(5, $any($event).target.innerText)" *mcRerender="skills[5].name">{{skills[5].name || "&nbsp;"}}</span>
+              <span class="value" contenteditable="true" (blur)="cardService.setSkillValue(5, $any($event).target.innerText)" *mcRerender="skills[5].value">{{skills[5].value || " "}}</span>
             </p>
           </div>
         </div>
-        <div class="foot-info">
+        <div class="foot-info" (mouseover)="setShowAllStress(true)" (mouseleave)="setShowAllStress(false)">
           <div class="stress">
-            <span>Стресс</span>&nbsp;
-            <span>У:</span>&nbsp;
-            <span class="red">{{stress.universal}}</span>&nbsp;
-            <span *ngIf="stress.physical">Ф:&nbsp;</span>
-            <span class="red" *ngIf="stress.physical">{{stress.physical}} &nbsp;</span>
-            <span *ngIf="stress.mental">М:&nbsp;</span>
-            <span class="red" *ngIf="stress.mental">{{stress.mental}}</span>
+            <div>
+              <span>Стресс</span>&nbsp;
+              <span>У:</span>&nbsp;
+              <span class="red" contenteditable="true" (blur)="cardService.setStressValue('universal', $any($event).target.innerText)" (mouseleave)="cardService.setStressValue('universal', $any($event).target.innerText)" *mcRerender="stress.universal">{{stress.universal}}</span>
+            </div>
+            <div *ngIf="stress.mental || showAllStress">
+              &nbsp;
+              <span *ngIf="stress.physical || showAllStress">Ф:&nbsp;</span>
+              <span class="red" contenteditable="true" (blur)="cardService.setStressValue('physical', $any($event).target.innerText)" (mouseleave)="cardService.setStressValue('physical', $any($event).target.innerText)" *mcRerender="stress.universal" >{{stress.physical|| "&nbsp; &nbsp;"}}</span>
+            </div>
+            <div *ngIf="stress.mental || showAllStress">
+              &nbsp;
+              <span *ngIf="stress.mental || showAllStress">М:&nbsp;</span>
+              <span class="red" contenteditable="true" (blur)="cardService.setStressValue('mental', $any($event).target.innerText)" (mouseleave)="cardService.setStressValue('mental', $any($event).target.innerText)" *mcRerender="stress.universal">{{stress.mental || "&nbsp; &nbsp;"}}</span>
+            </div>
           </div>
           <div class="PP">
-            <span>ПС:</span>&nbsp;<span class="red">{{PP}}</span>
+            <span>ПС:</span>&nbsp;<span class="red" contenteditable="true" (blur)="cardService.setPP($any($event).target.innerText)" *mcRerender="PP">{{PP}}</span>
           </div>
         </div>
       </div>

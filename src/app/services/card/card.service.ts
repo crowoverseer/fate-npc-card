@@ -124,19 +124,19 @@ export class CardService {
 
   setSkillName(idx: number, value: string) {
     const currentSkills = this.skillSubject.value;
-    currentSkills[idx].name = value;
+    currentSkills[idx].name = value.trim();
     this.skillSubject.next(currentSkills);
   }
 
   setSkillValue(idx: number, value: number) {
     const currentSkills = this.skillSubject.value;
-    currentSkills[idx].value = value;
+    currentSkills[idx].value = Number((value as unknown as string).trim());
     this.skillSubject.next(currentSkills);
   }
 
   setStressValue(type: 'universal' | 'physical' | 'mental', value: string) {
     const currentStress = this.stressSubject.value;
-    currentStress[type] = value;
+    currentStress[type] = value.trim();
     this.stressSubject.next(currentStress);
   }
 
