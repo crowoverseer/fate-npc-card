@@ -68,7 +68,7 @@
               <span>У:</span>&nbsp;
               <span class="red" contenteditable="true" (blur)="cardService.setStressValue('universal', $any($event).target.innerText)" (mouseleave)="cardService.setStressValue('universal', $any($event).target.innerText)" *mcRerender="stress.universal">{{stress.universal}}</span>
             </div>
-            <div *ngIf="stress.mental || showAllStress">
+            <div *ngIf="stress.physical || showAllStress">
               &nbsp;
               <span *ngIf="stress.physical || showAllStress">Ф:&nbsp;</span>
               <span class="red" contenteditable="true" (blur)="cardService.setStressValue('physical', $any($event).target.innerText)" (mouseleave)="cardService.setStressValue('physical', $any($event).target.innerText)" *mcRerender="stress.universal" >{{stress.physical|| "&nbsp; &nbsp;"}}</span>
