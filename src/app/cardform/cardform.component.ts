@@ -21,7 +21,6 @@ import {
 export class CardformComponent {
   name!: string;
   fontSizes!: FontSizes;
-  aspects!: string[];
   stunts!: Stunt[];
   skills!: Skill[];
   stress!: Stress;
@@ -33,9 +32,6 @@ export class CardformComponent {
     });
     this.cardService.fontSizes.subscribe((fontSizes) => {
       this.fontSizes = fontSizes;
-    });
-    this.cardService.aspects.subscribe((aspects) => {
-      this.aspects = aspects;
     });
     this.cardService.stunts.subscribe((stunts) => {
       this.stunts = stunts;

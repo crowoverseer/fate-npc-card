@@ -25,12 +25,17 @@ export interface FontSizes {
 interface Serialized {
   name: string;
   fontSizes: FontSizes;
-  aspects: string[];
+  aspect: string;
   stunts: Stunt[];
   skills: Skill[];
   stress: Stress;
   PP: number;
 }
+
+const addDot = (text: string) =>
+  text.charAt(text.length - 1) === '.'
+    ? text.slice(0, text.length)
+    : text && text.concat('.');
 
 @Injectable({
   providedIn: 'root',
@@ -41,9 +46,7 @@ export class CardService {
     name: 50,
     stunt: 20,
   });
-  private aspectsSubject = new BehaviorSubject<string[]>(
-    new Array<string>(5).fill('')
-  );
+  private aspectSubject = new BehaviorSubject<string>('');
   private stuntsSubject = new BehaviorSubject<Stunt[]>(
     Array.from({ length: 5 }, () => ({ name: '', description: '' }))
   );
@@ -59,7 +62,7 @@ export class CardService {
 
   name = this.nameSubject.asObservable();
   fontSizes = this.fontSizesSubject.asObservable();
-  aspects = this.aspectsSubject.asObservable();
+  aspect = this.aspectSubject.asObservable();
   stunts = this.stuntsSubject.asObservable();
   skills = this.skillSubject.asObservable();
   stress = this.stressSubject.asObservable();
@@ -85,22 +88,37 @@ export class CardService {
     this.fontSizesSubject.next(currentFontSizes);
   }
 
-  setAspect(idx: number, value: string) {
-    const currentAspects = this.aspectsSubject.value;
-    currentAspects[idx] = value;
-    this.aspectsSubject.next(currentAspects);
+  setAspect(value: string) {
+    this.aspectSubject.next(value);
   }
 
   setStuntDescr(idx: number, value: string) {
     const currentStunts = this.stuntsSubject.value;
-    currentStunts[idx].description = value;
+    currentStunts[idx].description = addDot(value);
     this.stuntsSubject.next(currentStunts);
   }
 
   setStuntName(idx: number, value: string) {
     const currentStunts = this.stuntsSubject.value;
-    currentStunts[idx].name = value;
-    console.log(idx, currentStunts);
+    currentStunts[idx].name = addDot(value);
+    this.stuntsSubject.next(currentStunts);
+  }
+
+  createEmptyStunt() {
+    const currentStunts = this.stuntsSubject.value;
+    for (let idx = 0; idx < 5; idx++) {
+      if (
+        !currentStunts[idx] ||
+        (currentStunts[idx].name.trim().length < 2 &&
+          currentStunts[idx].description.trim().length < 2)
+      ) {
+        currentStunts[idx] = {
+          name: 'Название.',
+          description: 'Описание.',
+        };
+        break;
+      }
+    }
     this.stuntsSubject.next(currentStunts);
   }
 
@@ -130,7 +148,7 @@ export class CardService {
     const json = {
       name: this.nameSubject.value,
       fontSizes: this.fontSizesSubject.value,
-      aspects: this.aspectsSubject.value,
+      aspect: this.aspectSubject.value,
       stunts: this.stuntsSubject.value,
       stress: this.stressSubject.value,
       skills: this.skillSubject.value,
@@ -149,7 +167,7 @@ export class CardService {
   loadFromData({
     name,
     fontSizes = this.fontSizesSubject.value,
-    aspects,
+    aspect,
     stress,
     skills,
     stunts,
@@ -157,10 +175,15 @@ export class CardService {
   }: Serialized) {
     this.nameSubject.next(name);
     this.fontSizesSubject.next(fontSizes);
-    this.aspectsSubject.next(aspects);
+    this.aspectSubject.next(aspect);
     this.stressSubject.next(stress);
     this.skillSubject.next(skills);
-    this.stuntsSubject.next(stunts);
+    this.stuntsSubject.next(
+      stunts.map((stunt) => ({
+        name: addDot(stunt.name),
+        description: addDot(stunt.description),
+      }))
+    );
     this.PPSubject.next(PP);
   }
 
@@ -169,10 +192,10 @@ export class CardService {
       this.loadFromData({
         name: '',
         fontSizes: {
-          name: 100,
-          stunt: 40,
+          name: 50,
+          stunt: 20,
         },
-        aspects: new Array<string>(5).fill(''),
+        aspect: '',
         stunts: Array.from({ length: 5 }, () => ({
           name: '',
           description: '',

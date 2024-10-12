@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgxRerenderModule } from 'ngx-rerender';
+
 import { DragDirective, FileHandle } from './dragDrop.directive';
 
 import {
@@ -13,28 +15,28 @@ import {
 @Component({
   selector: 'card',
   standalone: true,
-  imports: [CommonModule, DragDirective],
+  imports: [CommonModule, DragDirective, NgxRerenderModule],
   templateUrl: './card.component.html',
   styleUrl: './card.component.sass',
 })
 export class CardComponent {
   name!: string;
   fontSizes!: FontSizes;
-  aspects!: string[];
+  aspect: string = '';
   stunts!: Stunt[];
   skills!: Skill[];
   stress!: Stress;
   PP!: number;
 
-  constructor(private cardService: CardService) {
+  constructor(public cardService: CardService) {
     this.cardService.name.subscribe((name) => {
       this.name = name;
     });
     this.cardService.fontSizes.subscribe((fontSizes) => {
       this.fontSizes = fontSizes;
     });
-    this.cardService.aspects.subscribe((aspects) => {
-      this.aspects = aspects;
+    this.cardService.aspect.subscribe((aspect) => {
+      this.aspect = aspect;
     });
     this.cardService.stunts.subscribe((stunts) => {
       this.stunts = stunts;

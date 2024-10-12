@@ -1,18 +1,13 @@
 <div class="name-and-size">
-  <input placeholder="Название" value={{name}} (keyup)="cardService.setName($any($event).target.value)" />
   <input placeholder="100" value={{fontSizes.name}} (keyup)="cardService.setFontSize('name', $any($event).target.value)" />
   <input placeholder="40" value={{fontSizes.stunt}} (keyup)="cardService.setFontSize('stunt', $any($event).target.value)" />
 </div>
 <hr />
-<div class="aspect-list">
-  <input  *ngFor="let idx of [0,1,2,3,4]" placeholder="Аспект {{idx + 1}}" value={{aspects[idx]}} (keyup)="cardService.setAspect(idx, $any($event).target.value)" />
-</div>
-<hr />
-<div *ngFor="let idx of [0,1,2,3,4]" class="stunt-line">
+<!-- <div *ngFor="let idx of [0,1,2,3,4]" class="stunt-line">
   <input placeholder="Трюк {{idx + 1}}" value={{stunts[idx].name}} (keyup)="cardService.setStuntName(idx, $any($event).target.value)" />
   <textarea placeholder="Описание" (keyup)="cardService.setStuntDescr(idx, $any($event).target.value)">{{stunts[idx].description}}</textarea>
 </div>
-<hr />
+<hr /> -->
 <div class="skills">
   <div class="skill-line" *ngFor="let idx of [0,1,2,3,4,5]">
     <input placeholder="Навык" value={{skills[idx].name}} (keyup)="cardService.setSkillName(idx, $any($event).target.value)" />

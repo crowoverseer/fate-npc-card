@@ -1,21 +1,34 @@
 <div id="card-render">
   <div class="border-wrapper">
-    <div class="head"><p [style.font-size]="fontSizes.name + 'px'">{{name}}</p></div>
+    <div class="head">
+      <p
+        [style.font-size]="fontSizes.name + 'px'"
+        contenteditable="true"
+        aria-multiline="true"
+        (blur)="cardService.setName($any($any($event).target.innerText))"
+        *mcRerender="name"
+      >{{name}}</p>
+    </div>
     <div class="body" appDrag (files)="filesDropped($event)">
       <div class="top">
-        <div class="aspect-list" *ngFor="let aspect of aspects">
-          <p *ngIf="aspect.length">{{aspect}}</p>
+        <div class="aspect-list">
+          <p
+            contenteditable="true"
+            (blur)="cardService.setAspect($any($event).target.innerText)"
+            *mcRerender="aspect"
+          >{{aspect}}</p>
         </div>
         <div class="divider"></div>
-        <div class="stunt-list" *ngFor="let stunt of stunts">
-          <div class="stunt" *ngIf="stunt.name || stunt.description">
+        <div class="stunt-list" *ngFor="let idx of [0,1,2,3,4]">
+          <div class="stunt" *ngIf="stunts[idx]?.name || stunts[idx]?.description">
             <p [style.font-size]="fontSizes.stunt + 'px'">
-              <span class="name">{{stunt.name}}.</span>
-              <span>{{stunt.description}}.</span>
+              <span class="name" contenteditable="true" (blur)="cardService.setStuntName(idx, $any($event).target.innerText)" *mcRerender="stunts[idx].name">{{stunts[idx].name || " "}}</span>
+              <span contenteditable="true" (blur)="cardService.setStuntDescr(idx, $any($event).target.innerText)" *mcRerender="stunts[idx].description">{{stunts[idx].description || " "}}</span>
             </p>
           </div>
         </div>
       </div>
+      <div class="stunt-add" (click)="cardService.createEmptyStunt()"></div>
       <div class="bottom">
         <div class="skills">
           <div class="skill-list left">
