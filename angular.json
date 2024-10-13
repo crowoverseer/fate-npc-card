@@ -17,9 +17,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "allowedCommonJsDependencies": [
-              "html2canvas"
-            ],
             "outputPath": "dist/fate-npc-card",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -33,6 +30,11 @@
               {
                 "glob": "**/**",
                 "input": "public/",
+                "output": "./"
+              },
+              {
+                "glob": "electron.js",
+                "input": "./",
                 "output": "./"
               }
             ],

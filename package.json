@@ -1,13 +1,43 @@
 {
   "homepage": "./",
   "name": "fate-npc-card",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "main": "electron.js",
+  "description": "Fate NPC card",
+  "author": "Ponomarev Leonid",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "electron": "electron .",
+    "electron-build": "ng build && zsh ./electron-fix.zsh && electron-builder --mac",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
+  },
+  "build": {
+    "productName": "Fate NPC card",
+    "appId": "com.mycompany|electron.myproductname",
+    "directories": {
+      "buildResources": "dist/fate-npc-card/browser/"
+    },
+    "files": [
+      "./dist/fate-npc-card/browser/**/*",
+      "./electron.js"
+    ],
+    "win": {
+        "target": [
+            "nsis",
+            "msi"
+        ]
+    },
+    "linux": {
+        "target": [
+            "deb",
+            "rpm",
+            "snap",
+            "AppImage"
+        ]
+    }
   },
   "private": true,
   "dependencies": {
@@ -33,6 +63,7 @@
     "@angular/compiler-cli": "^18.1.0",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^22.7.5",
+    "electron": "^32.2.0",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
