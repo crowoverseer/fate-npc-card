@@ -32,6 +32,8 @@ interface Serialized {
   PP: number;
 }
 
+const DICE_ID = '6665f27135f26d265d89272f';
+
 const addDot = (text: string) =>
   text.charAt(text.length - 1) === '.'
     ? text.slice(0, text.length)
@@ -59,6 +61,7 @@ export class CardService {
     mental: '',
   });
   private PPSubject = new BehaviorSubject<number>(3);
+  private alchemyJSON: any = {};
 
   name = this.nameSubject.asObservable();
   fontSizes = this.fontSizesSubject.asObservable();
@@ -162,6 +165,128 @@ export class CardService {
     a.href = URL.createObjectURL(file);
     a.download = `${json.name}.json`;
     a.click();
+  }
+
+  alchemy() {
+    this.alchemyJSON = {
+      actions: [],
+      isBackstoryPublic: true,
+      isNPC: true,
+      name: this.nameSubject.value,
+      description: '',
+      systemKey: 'custom',
+      skills: [],
+      trackers: [
+        {
+          category: 'experience',
+          color: 'Yellow',
+          max: 8,
+          name: 'Жетоны',
+          type: 'Bar',
+          value: 0,
+        },
+      ],
+    };
+    this.addAlchemyAspects();
+    this.addAlchemyActions();
+    this.addAlchemyStress();
+    this.addAlchemyPP();
+
+    var a = document.createElement('a');
+    var file = new Blob([JSON.stringify(this.alchemyJSON)], {
+      type: 'text/json',
+    });
+    a.href = URL.createObjectURL(file);
+    a.download = `${this.nameSubject.value}.alchemy.json`;
+    a.click();
+  }
+
+  private addAlchemyAspects() {
+    this.alchemyJSON.description = this.aspectSubject.value
+      .split('\n')
+      .map((aspect) => `### ${aspect}\n\n`)
+      .join('');
+  }
+
+  private addAlchemyActions() {
+    let actionIdx = 1;
+    this.skillSubject.value.forEach((skill) => {
+      this.alchemyJSON.actions.push({
+        name: `${skill.name} ${skill.value}`,
+        sortOrder: actionIdx++,
+        steps: [
+          {
+            dicePool: {
+              __typename: 'ActionStepDicePool',
+            },
+            segmentedDicePool: [
+              {
+                __typename: 'ActionStepDicePool',
+                bonus: 0,
+                canReroll: false,
+                customDiceId: DICE_ID,
+                explode: false,
+                numberOfDice: 0,
+                numberOfFaces: 3,
+                skill: skill.name,
+                successValues: [2, 3],
+                useAbilityAndSkill: true,
+              },
+            ],
+            type: 'dice-pool',
+          },
+        ],
+      });
+    });
+    // stunts
+    this.stuntsSubject.value
+      .filter((stunt) => stunt.name.length)
+      .map((stunt) => ({
+        description: stunt.description,
+        name: stunt.name,
+        sortOrder: actionIdx++,
+        steps: [
+          {
+            journalMessage: `### ${stunt.name}\n${stunt.description}`,
+            journalMessageIsMarkdown: true,
+            type: 'message',
+          },
+        ],
+      }))
+      .forEach((action) => this.alchemyJSON.actions.push(action));
+  }
+
+  private addAlchemyPP() {
+    this.alchemyJSON.trackers.push({
+      category: 'health',
+      color: 'Blue',
+      max: Number(this.PPSubject.value),
+      name: 'Пункты силы',
+      type: 'Bar',
+      value: Number(this.PPSubject.value),
+    });
+  }
+
+  private addAlchemyStress() {
+    const addStress = (type: string, val: string) => {
+      if (!val) return;
+      this.alchemyJSON.trackers.push({
+        color: 'Green',
+        max: 1,
+        name: `Стресс ${type} ${val}`,
+        type: 'Pip',
+        value: 0,
+      });
+    };
+    (this.stressSubject.value.universal || '')
+      ?.split(' ')
+      .forEach((stressVal) => addStress('У', stressVal));
+    (this.stressSubject.value.physical || '')
+      ?.split(' ')
+      .forEach((stressVal) => addStress('Ф', stressVal));
+    (this.stressSubject.value.mental || '')
+      ?.split(' ')
+      .forEach((stressVal) => addStress('М', stressVal));
   }
 
   loadFromData({
