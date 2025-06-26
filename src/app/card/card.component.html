@@ -78,6 +78,11 @@
               <span *ngIf="stress.mental || showAllStress">М:&nbsp;</span>
               <span class="red" contenteditable="true" (blur)="cardService.setStressValue('mental', $any($event).target.innerText)" (mouseleave)="cardService.setStressValue('mental', $any($event).target.innerText)" *mcRerender="stress.universal">{{stress.mental || "&nbsp; &nbsp;"}}</span>
             </div>
+            <div *ngIf="rating || showAllStress">
+              &nbsp;
+              <span *ngIf="rating || showAllStress">Рейтинг:&nbsp;</span>
+              <span class="red" contenteditable="true" (blur)="cardService.setRating($any($event).target.innerText)" (mouseleave)="cardService.setRating($any($event).target.innerText)" *mcRerender="rating">{{rating || "&nbsp; &nbsp;"}}</span>
+            </div>
           </div>
           <div class="PP">
             <span>ПС:</span>&nbsp;<span class="red" contenteditable="true" (blur)="cardService.setPP($any($event).target.innerText)" *mcRerender="PP">{{PP}}</span>

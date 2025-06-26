@@ -29,6 +29,7 @@ interface Serialized {
   stunts: Stunt[];
   skills: Skill[];
   stress: Stress;
+  rating: number;
   PP: number;
 }
 
@@ -61,6 +62,7 @@ export class CardService {
     mental: '',
   });
   private PPSubject = new BehaviorSubject<number>(3);
+  private ratingSubject = new BehaviorSubject<number>(0);
   private alchemyJSON: any = {};
 
   name = this.nameSubject.asObservable();
@@ -70,6 +72,7 @@ export class CardService {
   skills = this.skillSubject.asObservable();
   stress = this.stressSubject.asObservable();
   PP = this.PPSubject.asObservable();
+  rating = this.ratingSubject.asObservable();
 
   constructor() {
     const data: Serialized = JSON.parse(
@@ -82,6 +85,10 @@ export class CardService {
 
   setName(message: string) {
     this.nameSubject.next(message);
+  }
+
+  setRating(value: string) {
+    this.ratingSubject.next(Number(value.trim()));
   }
 
   setFontSize(type: keyof FontSizes, value: number) {
@@ -156,6 +163,7 @@ export class CardService {
       stress: this.stressSubject.value,
       skills: this.skillSubject.value,
       PP: this.PPSubject.value,
+      rating: this.ratingSubject.value,
     };
 
     window.localStorage.setItem('json', JSON.stringify(json));
@@ -297,6 +305,7 @@ export class CardService {
     skills,
     stunts,
     PP,
+    rating = 0,
   }: Serialized) {
     this.nameSubject.next(name);
     this.fontSizesSubject.next(fontSizes);
@@ -310,6 +319,7 @@ export class CardService {
       }))
     );
     this.PPSubject.next(PP);
+    this.ratingSubject.next(rating);
   }
 
   clear() {
@@ -332,6 +342,7 @@ export class CardService {
           mental: '',
         },
         PP: 3,
+        rating: 0,
       });
     }
   }

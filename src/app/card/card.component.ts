@@ -28,6 +28,7 @@ export class CardComponent {
   stress!: Stress;
   PP!: number;
   showAllStress: boolean = false;
+  rating: number = 0;
 
   constructor(public cardService: CardService) {
     this.cardService.name.subscribe((name) => {
@@ -50,6 +51,9 @@ export class CardComponent {
     });
     this.cardService.PP.subscribe((PP) => {
       this.PP = PP;
+    });
+    this.cardService.rating.subscribe((rating) => {
+      this.rating = rating;
     });
   }
 
