@@ -216,13 +216,17 @@ export class CardService {
   }
 
   private addAlchemyAspects() {
-    this.alchemyJSON.description = this.aspectSubject.value
-      .split('\n')
-      .map((aspect) => (aspect ? `### ${aspect}\n\n` : ''))
-      .join('');
-    this.alchemyJSON.sheetData.entries = this.aspectSubject.value
-      .split('\n')
-      .map((aspect, idx) => [`text_${idx + 1}`, aspect]);
+    const aspects = this.aspectSubject.value.split('\n');
+    if (aspects.length > 0) {
+      this.alchemyJSON.subtitle = aspects[0];
+      this.alchemyJSON.description = aspects
+        .map((aspect) => (aspect ? `### ${aspect}\n\n` : ''))
+        .join('');
+      this.alchemyJSON.sheetData.entries = aspects.map((aspect, idx) => [
+        `text_${idx + 1}`,
+        aspect,
+      ]);
+    }
   }
 
   private addAlchemySkills() {
