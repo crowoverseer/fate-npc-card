@@ -183,6 +183,11 @@ export class CardService {
       name: this.nameSubject.value,
       description: '',
       systemKey: 'custom',
+      sheetData: {
+        $type: 'map',
+        entries: [],
+      },
+      sheetId: '68c15cf08f494f23419f7ba3',
       skills: [],
       trackers: [
         {
@@ -196,9 +201,10 @@ export class CardService {
       ],
     };
     this.addAlchemyAspects();
+    this.addAlchemySkills();
     this.addAlchemyActions();
-    this.addAlchemyStress();
     this.addAlchemyPP();
+    this.addAlchemyStress();
 
     var a = document.createElement('a');
     var file = new Blob([JSON.stringify(this.alchemyJSON)], {
@@ -212,46 +218,32 @@ export class CardService {
   private addAlchemyAspects() {
     this.alchemyJSON.description = this.aspectSubject.value
       .split('\n')
-      .map((aspect) => `### ${aspect}\n\n`)
+      .map((aspect) => (aspect ? `### ${aspect}\n\n` : ''))
       .join('');
+    this.alchemyJSON.sheetData.entries = this.aspectSubject.value
+      .split('\n')
+      .map((aspect, idx) => [`text_${idx + 1}`, aspect]);
+  }
+
+  private addAlchemySkills() {
+    this.skillSubject.value.forEach((skill) => {
+      this.alchemyJSON.skills.push({
+        abilityName: 'New Attribute',
+        name: skill.name,
+        pip: false,
+        value: skill.value,
+      });
+    });
   }
 
   private addAlchemyActions() {
     let actionIdx = 1;
-    this.skillSubject.value.forEach((skill) => {
-      this.alchemyJSON.actions.push({
-        name: `${skill.name} ${skill.value}`,
-        sortOrder: actionIdx++,
-        steps: [
-          {
-            dicePool: {
-              __typename: 'ActionStepDicePool',
-            },
-            segmentedDicePool: [
-              {
-                __typename: 'ActionStepDicePool',
-                bonus: 0,
-                canReroll: false,
-                customDiceId: DICE_ID,
-                explode: false,
-                numberOfDice: 0,
-                numberOfFaces: 3,
-                skill: skill.name,
-                successValues: [2, 3],
-                useAbilityAndSkill: true,
-              },
-            ],
-            type: 'dice-pool',
-          },
-        ],
-      });
-    });
     // stunts
     this.stuntsSubject.value
       .filter((stunt) => stunt.name.length)
       .map((stunt) => ({
         description: stunt.description,
-        name: stunt.name,
+        name: `Трюк: ${stunt.name.replaceAll('.', '')}`,
         sortOrder: actionIdx++,
         steps: [
           {
@@ -262,6 +254,51 @@ export class CardService {
         ],
       }))
       .forEach((action) => this.alchemyJSON.actions.push(action));
+    // skills
+    this.skillSubject.value.forEach((skill) => {
+      if (skill.value) {
+        let possibleRating = '';
+        const lowercaseName = skill.name.toLocaleLowerCase();
+        if (
+          (lowercaseName.indexOf('драка') >= 0 ||
+            lowercaseName.indexOf('стрельба') >= 0) &&
+          this.ratingSubject.value
+        ) {
+          possibleRating = ` Рейтинг ${this.ratingSubject.value}`;
+        }
+        this.alchemyJSON.actions.push({
+          name: `${skill.name} ${skill.value}`,
+          shouldOpenActionTray: false,
+          sortOrder: actionIdx++,
+          steps: [
+            {
+              attack: {
+                actionType: 'Action',
+                crit: 20,
+                name: `${skill.name} ${skill.value}`,
+                rollsAttack: true,
+                savingThrow: {},
+              },
+              dicePool: {
+                __typename: 'ActionStepDicePool',
+              },
+              diceRoll: [
+                {
+                  customDiceId: '68c1636e33ddd6ea9538d803',
+                  dice: '4d3',
+                  bonus: -8,
+                  skillName: skill.name,
+                },
+              ],
+              journalCommand: {},
+              rollTable: {},
+              skillCheck: {},
+              type: 'custom-dice-roll',
+            },
+          ],
+        });
+      }
+    });
   }
 
   private addAlchemyPP() {
