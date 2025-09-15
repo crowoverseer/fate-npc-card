@@ -251,8 +251,8 @@ export class CardService {
         sortOrder: actionIdx++,
         steps: [
           {
-            journalMessage: `![${stunt.description}=type:color_sans]()`,
-            journalMessageIsMarkdown: true,
+            journalMessage: `${stunt.description}`,
+            journalMessageIsMarkdown: false,
             type: 'message',
           },
         ],
