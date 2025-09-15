@@ -1,7 +1,7 @@
 {
   "homepage": "./",
   "name": "fate-npc-card",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "main": "electron.js",
   "description": "Fate NPC card",
   "author": "Ponomarev Leonid",
