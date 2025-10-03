@@ -1,0 +1,738 @@
+{
+  "data": {
+    "characterById": {
+      "__typename": "Character",
+      "_id": "6227f6b541524f9720020336",
+      "name": "Gallus Druid",
+      "subtitle": null,
+      "imageUri": "https://cdn.alchemyrpg.com/users/6003d6b6708dcf0008912a72/characters/08086a8d-aad1-4e86-849a-2f9eeb9ec31d/l1irviki.jpg",
+      "systemKey": "5e",
+      "universeId": "62181b996de36bad278fb8a4",
+      "sheetId": null,
+      "isNPC": true,
+      "isSheetTemplate": null,
+      "isUniverseTemplate": null,
+      "deletedOn": null,
+      "sheetData": null,
+      "description": null,
+      "isBackstoryPublic": null,
+      "age": null,
+      "height": null,
+      "weight": null,
+      "eyes": null,
+      "skin": null,
+      "hair": null,
+      "abilityScores": [
+        {
+          "name": "str",
+          "abbreviation": null,
+          "value": 12,
+          "die": null,
+          "modifier": null,
+          "additionalAttributeName": null
+        },
+        {
+          "name": "dex",
+          "abbreviation": null,
+          "value": 13,
+          "die": null,
+          "modifier": null,
+          "additionalAttributeName": null
+        },
+        {
+          "name": "con",
+          "abbreviation": null,
+          "value": 14,
+          "die": null,
+          "modifier": null,
+          "additionalAttributeName": null
+        },
+        {
+          "name": "int",
+          "abbreviation": null,
+          "value": 10,
+          "die": null,
+          "modifier": null,
+          "additionalAttributeName": null
+        },
+        {
+          "name": "wis",
+          "abbreviation": null,
+          "value": 18,
+          "die": null,
+          "modifier": null,
+          "additionalAttributeName": null
+        },
+        {
+          "name": "cha",
+          "abbreviation": null,
+          "value": 10,
+          "die": null,
+          "modifier": null,
+          "additionalAttributeName": null
+        }
+      ],
+      "alignment": "Any Neutral",
+      "armorClass": 11,
+      "armorType": null,
+      "challengeRating": "4",
+      "classes": [
+        {
+          "class": "Monster",
+          "level": 1,
+          "description": null
+        }
+      ],
+      "initiativeBonus": 0,
+      "items": null,
+      "legendary": null,
+      "proficiencies": [
+        {
+          "name": "Birdfolk",
+          "type": "language"
+        },
+        {
+          "name": "Druidic",
+          "type": "language"
+        },
+        {
+          "name": "Sylvan",
+          "type": "language"
+        },
+        {
+          "name": "Can also understand Auran, but cannot speak it",
+          "type": "language"
+        }
+      ],
+      "proficiencyBonus": 2,
+      "race": "NPC",
+      "size": "Medium",
+      "tokenImageUri": null,
+      "disableTokenRing": null,
+      "tokenRingColor": null,
+      "skills": [
+        {
+          "_id": "60f50eb8e714990008c1319b",
+          "name": "Acrobatics",
+          "abilityName": "dex",
+          "description": null,
+          "proficient": false,
+          "doubleProficiency": null,
+          "level": null,
+          "roll": null,
+          "bonus": null,
+          "value": null,
+          "die": null,
+          "training": null,
+          "category": null,
+          "pip": null
+        },
+        {
+          "_id": "60f50eb8e714990008c1319c",
+          "name": "Animal Handling",
+          "abilityName": "wis",
+          "description": null,
+          "proficient": false,
+          "doubleProficiency": null,
+          "level": null,
+          "roll": null,
+          "bonus": null,
+          "value": null,
+          "die": null,
+          "training": null,
+          "category": null,
+          "pip": null
+        },
+        {
+          "_id": "60f50eb8e714990008c1319d",
+          "name": "Arcana",
+          "abilityName": "int",
+          "description": null,
+          "proficient": false,
+          "doubleProficiency": null,
+          "level": null,
+          "roll": null,
+          "bonus": null,
+          "value": null,
+          "die": null,
+          "training": null,
+          "category": null,
+          "pip": null
+        },
+        {
+          "_id": "60f50eb8e714990008c1319e",
+          "name": "Athletics",
+          "abilityName": "str",
+          "description": null,
+          "proficient": false,
+          "doubleProficiency": null,
+          "level": null,
+          "roll": null,
+          "bonus": null,
+          "value": null,
+          "die": null,
+          "training": null,
+          "category": null,
+          "pip": null
+        },
+        {
+          "_id": "60f50eb8e714990008c1319f",
+          "name": "Deception",
+          "abilityName": "cha",
+          "description": null,
+          "proficient": false,
+          "doubleProficiency": null,
+          "level": null,
+          "roll": null,
+          "bonus": null,
+          "value": null,
+          "die": null,
+          "training": null,
+          "category": null,
+          "pip": null
+        },
+        {
+          "_id": "60f50eb8e714990008c131a0",
+          "name": "History",
+          "abilityName": "int",
+          "description": null,
+          "proficient": false,
+          "doubleProficiency": null,
+          "level": null,
+          "roll": null,
+          "bonus": null,
+          "value": null,
+          "die": null,
+          "training": null,
+          "category": null,
+          "pip": null
+        },
+        {
+          "_id": "60f50eb8e714990008c131a1",
+          "name": "Insight",
+          "abilityName": "wis",
+          "description": null,
+          "proficient": true,
+          "doubleProficiency": null,
+          "level": null,
+          "roll": null,
+          "bonus": null,
+          "value": null,
+          "die": null,
+          "training": null,
+          "category": null,
+          "pip": null
+        },
+        {
+          "_id": "60f50eb8e714990008c131a2",
+          "name": "Intimidation",
+          "abilityName": "cha",
+          "description": null,
+          "proficient": false,
+          "doubleProficiency": null,
+          "level": null,
+          "roll": null,
+          "bonus": null,
+          "value": null,
+          "die": null,
+          "training": null,
+          "category": null,
+          "pip": null
+        },
+        {
+          "_id": "60f50eb8e714990008c131a3",
+          "name": "Investigation",
+          "abilityName": "int",
+          "description": null,
+          "proficient": false,
+          "doubleProficiency": null,
+          "level": null,
+          "roll": null,
+          "bonus": null,
+          "value": null,
+          "die": null,
+          "training": null,
+          "category": null,
+          "pip": null
+        },
+        {
+          "_id": "60f50eb8e714990008c131a4",
+          "name": "Medicine",
+          "abilityName": "wis",
+          "description": null,
+          "proficient": true,
+          "doubleProficiency": null,
+          "level": null,
+          "roll": null,
+          "bonus": null,
+          "value": null,
+          "die": null,
+          "training": null,
+          "category": null,
+          "pip": null
+        },
+        {
+          "_id": "60f50eb8e714990008c131a5",
+          "name": "Nature",
+          "abilityName": "int",
+          "description": null,
+          "proficient": true,
+          "doubleProficiency": null,
+          "level": null,
+          "roll": null,
+          "bonus": null,
+          "value": null,
+          "die": null,
+          "training": null,
+          "category": null,
+          "pip": null
+        },
+        {
+          "_id": "60f50eb8e714990008c131a6",
+          "name": "Perception",
+          "abilityName": "wis",
+          "description": null,
+          "proficient": true,
+          "doubleProficiency": null,
+          "level": null,
+          "roll": null,
+          "bonus": null,
+          "value": null,
+          "die": null,
+          "training": null,
+          "category": null,
+          "pip": null
+        },
+        {
+          "_id": "60f50eb8e714990008c131a7",
+          "name": "Performance",
+          "abilityName": "cha",
+          "description": null,
+          "proficient": false,
+          "doubleProficiency": null,
+          "level": null,
+          "roll": null,
+          "bonus": null,
+          "value": null,
+          "die": null,
+          "training": null,
+          "category": null,
+          "pip": null
+        },
+        {
+          "_id": "60f50eb8e714990008c131a8",
+          "name": "Persuasion",
+          "abilityName": "cha",
+          "description": null,
+          "proficient": false,
+          "doubleProficiency": null,
+          "level": null,
+          "roll": null,
+          "bonus": null,
+          "value": null,
+          "die": null,
+          "training": null,
+          "category": null,
+          "pip": null
+        },
+        {
+          "_id": "60f50eb8e714990008c131a9",
+          "name": "Religion",
+          "abilityName": "int",
+          "description": null,
+          "proficient": false,
+          "doubleProficiency": null,
+          "level": null,
+          "roll": null,
+          "bonus": null,
+          "value": null,
+          "die": null,
+          "training": null,
+          "category": null,
+          "pip": null
+        },
+        {
+          "_id": "60f50eb8e714990008c131aa",
+          "name": "Sleight of Hand",
+          "abilityName": "dex",
+          "description": null,
+          "proficient": false,
+          "doubleProficiency": null,
+          "level": null,
+          "roll": null,
+          "bonus": null,
+          "value": null,
+          "die": null,
+          "training": null,
+          "category": null,
+          "pip": null
+        },
+        {
+          "_id": "60f50eb8e714990008c131ab",
+          "name": "Stealth",
+          "abilityName": "dex",
+          "description": null,
+          "proficient": false,
+          "doubleProficiency": null,
+          "level": null,
+          "roll": null,
+          "bonus": null,
+          "value": null,
+          "die": null,
+          "training": null,
+          "category": null,
+          "pip": null
+        },
+        {
+          "_id": "60f50eb8e714990008c131ac",
+          "name": "Survival",
+          "abilityName": "wis",
+          "description": null,
+          "proficient": false,
+          "doubleProficiency": null,
+          "level": null,
+          "roll": null,
+          "bonus": null,
+          "value": null,
+          "die": null,
+          "training": null,
+          "category": null,
+          "pip": null
+        }
+      ],
+      "speed": 30,
+      "tagBlocks": [],
+      "textBlocks": [
+        {
+          "_id": "60f50eb8e714990008c131b0",
+          "textBlocks": [],
+          "title": "Class Features",
+          "subtitle": null
+        },
+        {
+          "_id": "60f50eb8e714990008c131b1",
+          "textBlocks": [],
+          "title": "Racial Traits",
+          "subtitle": null
+        },
+        {
+          "_id": "60f50eb8e714990008c131b2",
+          "textBlocks": [],
+          "title": "Feats",
+          "subtitle": null
+        },
+        {
+          "_id": "60f50eb8e714990008c131b3",
+          "textBlocks": [
+            {
+              "_id": "60f50eb8e714990008c131b4",
+              "body": "",
+              "title": "",
+              "subtitle": null
+            },
+            {
+              "_id": "60f50eb8e714990008c131b5",
+              "body": "",
+              "title": "",
+              "subtitle": null
+            }
+          ],
+          "title": "Background",
+          "subtitle": null
+        },
+        {
+          "_id": "60f50eb8e714990008c131b6",
+          "textBlocks": [
+            {
+              "_id": "60f50eb8e714990008c131b7",
+              "body": "",
+              "title": "Personality Traits",
+              "subtitle": null
+            },
+            {
+              "_id": "60f50eb8e714990008c131b8",
+              "body": "",
+              "title": "Ideals",
+              "subtitle": null
+            },
+            {
+              "_id": "60f50eb8e714990008c131b9",
+              "body": "",
+              "title": "Bonds",
+              "subtitle": null
+            },
+            {
+              "_id": "60f50eb8e714990008c131ba",
+              "body": "",
+              "title": "Flaws",
+              "subtitle": null
+            }
+          ],
+          "title": "Characteristics",
+          "subtitle": null
+        },
+        {
+          "_id": "60f50eb8e714990008c131bb",
+          "textBlocks": [
+            {
+              "_id": "60f50eb8e714990008c131bc",
+              "body": "",
+              "title": null,
+              "subtitle": null
+            }
+          ],
+          "title": "Appearance",
+          "subtitle": null
+        },
+        {
+          "_id": "60f50eb8e714990008c131bd",
+          "textBlocks": [],
+          "title": "Organizations",
+          "subtitle": null
+        },
+        {
+          "_id": "60f50eb8e714990008c131be",
+          "textBlocks": [],
+          "title": "Allies",
+          "subtitle": null
+        },
+        {
+          "_id": "60f50eb8e714990008c131bf",
+          "textBlocks": [],
+          "title": "Enemies",
+          "subtitle": null
+        },
+        {
+          "_id": "60f50eb8e714990008c131c0",
+          "textBlocks": [
+            {
+              "_id": "60f50eb8e714990008c131c1",
+              "body": "",
+              "title": null,
+              "subtitle": null
+            }
+          ],
+          "title": "Backstory",
+          "subtitle": null
+        },
+        {
+          "_id": "60f50eb8e714990008c131c2",
+          "textBlocks": [
+            {
+              "_id": "60f50eb8e714990008c131c3",
+              "body": "",
+              "title": null,
+              "subtitle": null
+            }
+          ],
+          "title": "Other",
+          "subtitle": null
+        },
+        {
+          "_id": "6227f84568940f04f0a7af1b",
+          "textBlocks": [
+            {
+              "_id": "6227f84568940f04f0a7af1c",
+              "body": "When falling at least 10 feet, the druid can spend a reaction to fly up to their speed in one direction as they descend. They land in an unoccupied space at the end of their movement, and take no falling damage. They cannot glide while carrying heavy objects, heavy weapons, or shields (though they can drop any held items as part of their reaction).",
+              "title": "Glide",
+              "subtitle": null
+            },
+            {
+              "_id": "6227f84568940f04f0a7af1d",
+              "body": "As a bonus action, the druid can use their powerful feathered arms to propel themselves upward up to half their movement speed. The druid can use it in conjunction with a regular jump, but not while gliding.  ",
+              "title": "Wing Flap",
+              "subtitle": null
+            },
+            {
+              "_id": "6227f84568940f04f0a7af1e",
+              "body": "The druid can communicate simple ideas to living plants, and is able to interpret their responses in simple language.",
+              "title": "Seedspeech",
+              "subtitle": null
+            },
+            {
+              "_id": "6227f84568940f04f0a7af1f",
+              "body": "The druid is a 6th-level spellcaster. Their spellcasting ability is Wisdom (spell save DC 14, +6 to hit with spell attacks). The druid has the following spells prepared:\n\nCantrips (at will): druidcraft, produce flame, shillelagh\n\n1st level (4 slots): animal friendship, cure wounds, entangle, fog cloud \n\n2nd level (3 slots): barkskin, gust of wind, moonbeam\n\n3rd level (3 slots): conjure animals, dispel magic, wind wall",
+              "title": "Spellcasting",
+              "subtitle": null
+            },
+            {
+              "_id": "6227f84568940f04f0a7af20",
+              "body": "As a bonus action, the druid calls forth a nature spirit. The spirit appears at a point the druid can see within 60 feet. The spirit creates a 30-foot-radius aura. The spirit is neither an object nor a creature, but is a spectral beast. As a bonus action, the druid can move the spirit to another location within 60 feet. The spirit lasts for 1 minute.\n\nBear Spirit. The druid and allies within the aura gain 9 temporary hit points and have advantage on Strength checks and saving throws.\n\nHawk Spirit. The druid can use their reaction to grant advantage to an ally’s attack roll against a target in the aura. The druid and allies within the aura have advantage on Wisdom (Perception) checks.\n\nUnicorn Spirit. If a spell that requires a spell slot heals the druid or allies in the aura, each creature of the druid’s choice also gains 4 hit points.",
+              "title": "Spirit Totem (Recharges after a Short or Long Rest.)",
+              "subtitle": null
+            }
+          ],
+          "title": "Abilities",
+          "subtitle": null
+        }
+      ],
+      "trackers": [
+        {
+          "name": "XP",
+          "value": 1100,
+          "stateValues": [],
+          "presetTags": [],
+          "tags": [],
+          "max": 355000,
+          "color": "Yellow",
+          "type": "Bar",
+          "category": "experience",
+          "_id": "68de693fcc0dff248670360a",
+          "sortOrder": null,
+          "readOnly": null,
+          "hidden": null
+        },
+        {
+          "name": "HP",
+          "value": 65,
+          "stateValues": [],
+          "presetTags": [],
+          "tags": [],
+          "max": 65,
+          "color": "Green",
+          "type": "Bar",
+          "category": "health",
+          "_id": "68de693fcc0dff248670360b",
+          "sortOrder": null,
+          "readOnly": null,
+          "hidden": null
+        }
+      ],
+      "type": "Humanoid",
+      "typeTags": [
+        "Gallus"
+      ],
+      "copper": null,
+      "silver": null,
+      "electrum": null,
+      "gold": null,
+      "platinum": null,
+      "conditionImmunities": [],
+      "damageImmunities": [],
+      "damageResistances": [],
+      "damageVulnerabilities": [],
+      "hitDice": "10d8+20",
+      "movementModes": [
+        {
+          "mode": "Walking",
+          "distance": 30
+        }
+      ],
+      "senses": [],
+      "spellcastingAbility": "wis",
+      "spellFilters": [],
+      "spells": [
+        {
+          "spellId": "61f9ce3cf17d5989532229bb",
+          "spellcastingAbilityOverride": null,
+          "isPrepared": true
+        },
+        {
+          "spellId": "61f9ce3ef17d5989532229c8",
+          "spellcastingAbilityOverride": null,
+          "isPrepared": true
+        },
+        {
+          "spellId": "61f9ce3ef17d5989532229c5",
+          "spellcastingAbilityOverride": null,
+          "isPrepared": true
+        },
+        {
+          "spellId": "61f9ce3bf17d5989532229ac",
+          "spellcastingAbilityOverride": null,
+          "isPrepared": true
+        },
+        {
+          "spellId": "61f9ce41f17d5989532229e4",
+          "spellcastingAbilityOverride": null,
+          "isPrepared": true
+        },
+        {
+          "spellId": "61f9ce40f17d5989532229da",
+          "spellcastingAbilityOverride": null,
+          "isPrepared": true
+        },
+        {
+          "spellId": "61f9ce40f17d5989532229de",
+          "spellcastingAbilityOverride": null,
+          "isPrepared": true
+        },
+        {
+          "spellId": "61f9ce3cf17d5989532229b7",
+          "spellcastingAbilityOverride": null,
+          "isPrepared": true
+        },
+        {
+          "spellId": "61f9ce45f17d598953222a05",
+          "spellcastingAbilityOverride": null,
+          "isPrepared": true
+        },
+        {
+          "spellId": "61f9ce4af17d598953222a32",
+          "spellcastingAbilityOverride": null,
+          "isPrepared": true
+        },
+        {
+          "spellId": "61f9ce45f17d598953222a09",
+          "spellcastingAbilityOverride": null,
+          "isPrepared": true
+        },
+        {
+          "spellId": "61f9ce47f17d598953222a1b",
+          "spellcastingAbilityOverride": null,
+          "isPrepared": true
+        },
+        {
+          "spellId": "61f9ce5ef17d598953222ad8",
+          "spellcastingAbilityOverride": null,
+          "isPrepared": true
+        }
+      ],
+      "spellSlots": [
+        {
+          "max": 4,
+          "remaining": 4
+        },
+        {
+          "max": 3,
+          "remaining": 3
+        },
+        {
+          "max": 3,
+          "remaining": 3
+        },
+        {
+          "max": 0,
+          "remaining": 0
+        },
+        {
+          "max": 0,
+          "remaining": 0
+        },
+        {
+          "max": 0,
+          "remaining": 0
+        },
+        {
+          "max": 0,
+          "remaining": 0
+        },
+        {
+          "max": 0,
+          "remaining": 0
+        },
+        {
+          "max": 0,
+          "remaining": 0
+        }
+      ],
+      "game": {
+        "_id": "60f50e60fc174400086eb97c",
+        "name": null
+      },
+      "user": {
+        "_id": "6003d6b6708dcf0008912a72"
+      }
+    }
+  }
+}

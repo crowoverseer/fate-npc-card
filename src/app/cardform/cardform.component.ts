@@ -1,14 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { toPng } from 'html-to-image';
 
-import {
-  CardService,
-  FontSizes,
-  Skill,
-  Stress,
-  Stunt,
-} from '../services/card/card.service';
+import { CardService } from '../services/card/card.service';
 
 @Component({
   selector: 'cardform',
@@ -18,33 +12,9 @@ import {
   styleUrl: './cardform.component.sass',
 })
 export class CardformComponent {
-  name!: string;
-  fontSizes!: FontSizes;
-  stunts!: Stunt[];
-  skills!: Skill[];
-  stress!: Stress;
-  PP!: number;
+  name: string = 'name';
 
-  constructor(public cardService: CardService) {
-    this.cardService.name.subscribe((name) => {
-      this.name = name;
-    });
-    this.cardService.fontSizes.subscribe((fontSizes) => {
-      this.fontSizes = fontSizes;
-    });
-    this.cardService.stunts.subscribe((stunts) => {
-      this.stunts = stunts;
-    });
-    this.cardService.skills.subscribe((skills) => {
-      this.skills = skills;
-    });
-    this.cardService.stress.subscribe((stress) => {
-      this.stress = stress;
-    });
-    this.cardService.PP.subscribe((PP) => {
-      this.PP = PP;
-    });
-  }
+  private cardService = inject(CardService);
 
   render() {
     console.log('Rendering');

@@ -1,9 +1,9 @@
 {
   "homepage": "./",
-  "name": "fate-npc-card",
+  "name": "5e-npc-card",
   "version": "1.4.3",
   "main": "electron.js",
-  "description": "Fate NPC card",
+  "description": "5E NPC card",
   "author": "Ponomarev Leonid",
   "scripts": {
     "ng": "ng",
@@ -15,13 +15,13 @@
     "test": "ng test"
   },
   "build": {
-    "productName": "Fate NPC card",
+    "productName": "5E NPC card",
     "appId": "com.mycompany|electron.myproductname",
     "directories": {
-      "buildResources": "dist/fate-npc-card/browser/"
+      "buildResources": "dist/5e-npc-card/browser/"
     },
     "files": [
-      "./dist/fate-npc-card/browser/**/*",
+      "./dist/5e-npc-card/browser/**/*",
       "./electron.js"
     ],
     "win": {

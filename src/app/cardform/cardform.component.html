@@ -1,11 +1,11 @@
 <div class="name-and-size">
-  <input placeholder="100" value={{fontSizes.name}} (keyup)="cardService.setFontSize('name', $any($event).target.value)" />
-  <input placeholder="40" value={{fontSizes.stunt}} (keyup)="cardService.setFontSize('stunt', $any($event).target.value)" />
-</div>
-<hr />
-<div class="buttons">
-  <button (click)="this.cardService.save()">Сохранить</button>
+  <input
+    placeholder="100"
+    type="number"
+  />
+  <input
+    placeholder="40"
+    type="number"
+    />
   <button (click)="render()">Рендер</button>
-  <button (click)="this.cardService.alchemy()">Alchemy</button>
-  <button (click)="this.cardService.clear()">Очистить</button>
 </div>
