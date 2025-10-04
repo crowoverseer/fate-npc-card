@@ -1,12 +1,13 @@
 <div id="card-render">
   <div class="border-wrapper">
     <div class="body" appDrag (files)="filesDropped($event)">
-      <div class="portrait" [style.background]="'url('.concat(cardService.character().imageUri).concat(')')">
+      <div class="portrait" [style.background]="'url('.concat(cardService.character().imageUri ?? '').concat(')')">
         <div class="cr">
           <label>{{cardService.character().challengeRating}}</label>
         </div>
         <div class="labels">
           <label class="name">{{cardService.character().name}}</label>
+          <label class="subtitle">{{subtitle()}}</label>
         </div>
       </div>
     </div>

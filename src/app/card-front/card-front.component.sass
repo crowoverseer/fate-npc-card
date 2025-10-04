@@ -1,4 +1,6 @@
 $red: #c22f25
+$body: rgb(196, 185, 152)
+$back: #20222c
 
 :host
   display: flex
@@ -10,7 +12,7 @@ $red: #c22f25
       border: 4px solid black
       width: 1024px
       .body
-        background-color: #ede4d9 !important
+        background-color: $back !important
         height: 1442px
         display: flex
         flex-direction: column
@@ -33,13 +35,13 @@ $red: #c22f25
             width: 100px
             margin-top: 30px
             margin-left: 850px
-            background: white
+            background: $back
             border-radius: 50%
             border: 4px solid black
             label
               font-family: "Harrington"
               font-size: 52px
-              color: black
+              color: $body
           .labels
             display: flex
             flex-direction: column
@@ -50,3 +52,12 @@ $red: #c22f25
               line-height: 30px
               font-family: "Harrington"
               margin-bottom: 30px
+              text-align: center
+            .subtitle
+              margin-bottom: 30px
+              font-size: 20px
+              font-family: "AvenirNext-DemiBold"
+              letter-spacing: 3px
+              line-height: 30px
+              color: $body
+              text-transform: uppercase

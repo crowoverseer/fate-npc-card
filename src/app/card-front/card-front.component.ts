@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxRerenderModule } from 'ngx-rerender';
 
@@ -15,6 +15,16 @@ import { CardService } from '../services/card/card.service';
 })
 export class CardFrontComponent {
   cardService = inject(CardService);
+
+  subtitle = computed(() => {
+    let subtitle = '';
+    subtitle += ` ${this.cardService.character().size || ''}`;
+    subtitle += ` ${this.cardService.character().type || ''}`;
+    const tags = this.cardService.character().typeTags?.join(', ');
+    subtitle += tags ? ` (${tags})` : '';
+    subtitle += ` / ${this.cardService.character().alignment || ''}`;
+    return subtitle.trim();
+  });
 
   filesDropped(files: any): void {
     if (files.length > 0) {
