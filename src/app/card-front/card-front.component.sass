@@ -16,7 +16,8 @@ $back: #20222c
         height: 1442px
         display: flex
         flex-direction: column
-        justify-content: space-between
+        justify-content: flex-start
+        gap: 30px
         .portrait
           width: 1024px
           height: 1024px
@@ -61,3 +62,28 @@ $back: #20222c
               line-height: 30px
               color: $body
               text-transform: uppercase
+      .ability-score-wrapper
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        align-items: center
+        margin-inline: 60px
+        .score-info
+          height: 70px
+          display: flex
+          flex-direction: column
+          align-items: center
+          text-transform: uppercase
+          justify-content: space-between
+          .score-name
+            font-family: "Charter-Black"
+            font-size: 28px
+            color: white
+            letter-spacing: 1px
+            line-height: 22px
+          .score-value
+            color: $body
+            font-family: "AvenirNext-DemiBold"
+            font-size: 26px
+            letter-spacing: 1px
+            line-height: 24px

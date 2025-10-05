@@ -4,7 +4,7 @@ import { NgxRerenderModule } from 'ngx-rerender';
 
 import { DragDirective, FileHandle } from './dragDrop.directive';
 
-import { CardService } from '../services/card/card.service';
+import { AbilityScoreAbr, CardService } from '../services/card/card.service';
 
 @Component({
   selector: 'card-front',
@@ -15,6 +15,7 @@ import { CardService } from '../services/card/card.service';
 })
 export class CardFrontComponent {
   cardService = inject(CardService);
+  AbilityScoreAbr = Object.values(AbilityScoreAbr);
 
   subtitle = computed(() => {
     let subtitle = '';

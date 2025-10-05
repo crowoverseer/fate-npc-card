@@ -10,6 +10,14 @@
           <label class="subtitle">{{subtitle()}}</label>
         </div>
       </div>
+      <div class="ability-score-wrapper">
+        @for( scoreName of AbilityScoreAbr; track scoreName) {
+          <div class="score-info">
+            <label class="score-name">{{scoreName}}</label>
+            <label class="score-value">{{cardService.getAbilityScore(scoreName)}} ({{cardService.getAbilityBonusByScoreString(scoreName)}})</label>
+          </div>
+        }
+      </div>
     </div>
   </div>
 </div>
