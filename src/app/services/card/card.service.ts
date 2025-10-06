@@ -14,6 +14,12 @@ interface AbilityScore {
   value: number;
 }
 
+interface Tracker {
+  name: string;
+  value: number;
+  category: string;
+}
+
 interface AlchemyCharacter {
   imageUri?: string;
   name: string;
@@ -23,6 +29,10 @@ interface AlchemyCharacter {
   typeTags?: string[];
   alignment?: string;
   abilityScores: AbilityScore[];
+  armorClass: number;
+  speed: number;
+  trackers: Tracker[];
+  hitDice?: string;
 }
 
 interface AlchemyData {
@@ -72,6 +82,21 @@ export class CardService {
         value: 10,
       },
     ],
+    trackers: [
+      {
+        name: 'XP',
+        value: 1100,
+        category: 'experience',
+      },
+      {
+        name: 'HP',
+        value: 65,
+        category: 'health',
+      },
+    ],
+    speed: 30,
+    armorClass: 11,
+    hitDice: '10d8+20',
   });
 
   getAbilityScore = (scoreName: string): number =>
@@ -87,6 +112,10 @@ export class CardService {
     const score = this.getAbilityBonusByScore(this.getAbilityScore(scoreName));
     return `${score >= 0 ? '+' : '-'}${score}`;
   };
+
+  getTracker = (name: string): number =>
+    this.character().trackers.find((tracker) => tracker.name === name)?.value ??
+    0;
 
   loadFromAlchemyJSON(json: AlchemyObject) {
     const {

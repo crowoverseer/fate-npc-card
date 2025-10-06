@@ -62,20 +62,19 @@ $back: #20222c
               line-height: 30px
               color: $body
               text-transform: uppercase
-      .ability-score-wrapper
+      .ability-score-wrapper, .main-info
         display: flex
         flex-direction: row
-        justify-content: space-between
+        justify-content: space-evenly
         align-items: center
-        margin-inline: 60px
         .score-info
           height: 70px
           display: flex
           flex-direction: column
           align-items: center
-          text-transform: uppercase
           justify-content: space-between
           .score-name
+            text-transform: uppercase
             font-family: "Charter-Black"
             font-size: 28px
             color: white
@@ -87,3 +86,12 @@ $back: #20222c
             font-size: 26px
             letter-spacing: 1px
             line-height: 24px
+          .accent
+            color: white
+      .main-info
+        .score-info
+          min-width: 150px
+      hr
+        height: 2px
+        background-color: rgb(56, 59, 69)
+        margin-inline: 40px

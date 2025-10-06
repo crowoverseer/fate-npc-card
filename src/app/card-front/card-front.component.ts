@@ -27,6 +27,12 @@ export class CardFrontComponent {
     return subtitle.trim();
   });
 
+  hitDice = computed(() =>
+    this.cardService.character().hitDice
+      ? ' ('.concat(this.cardService.character().hitDice?.concat(')') ?? '')
+      : ''
+  );
+
   filesDropped(files: any): void {
     if (files.length > 0) {
       const file = files[0] as FileHandle;

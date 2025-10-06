@@ -10,6 +10,21 @@
           <label class="subtitle">{{subtitle()}}</label>
         </div>
       </div>
+      <div class="main-info">
+        <div class="score-info">
+          <label class="score-name">Armor Class</label>
+          <label class="score-value">{{cardService.character().armorClass}}</label>
+        </div>
+        <div class="score-info">
+          <label class="score-name">HP</label>
+          <label class="score-value">{{cardService.getTracker("HP")}}</label>
+        </div>
+        <div class="score-info">
+          <label class="score-name">Speed</label>
+          <label class="score-value">{{cardService.character().speed}}</label>
+        </div>
+      </div>
+      <hr />
       <div class="ability-score-wrapper">
         @for( scoreName of AbilityScoreAbr; track scoreName) {
           <div class="score-info">
@@ -18,6 +33,7 @@
           </div>
         }
       </div>
+      <hr />
     </div>
   </div>
 </div>
