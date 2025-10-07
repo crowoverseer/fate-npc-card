@@ -1,4 +1,5 @@
 import { Injectable, signal } from '@angular/core';
+import { gallus } from './card.mock';
 
 export enum AbilityScoreAbr {
   Str = 'str',
@@ -20,7 +21,19 @@ interface Tracker {
   category: string;
 }
 
-interface AlchemyCharacter {
+interface Skill {
+  name: string;
+  abilityName: AbilityScoreAbr;
+  proficient: boolean;
+  doubleProficiency: boolean | null;
+}
+
+interface Proficiency {
+  name: string;
+  type: 'save' | 'language';
+}
+
+export interface AlchemyCharacter {
   imageUri?: string;
   name: string;
   challengeRating: string;
@@ -33,13 +46,17 @@ interface AlchemyCharacter {
   speed: number;
   trackers: Tracker[];
   hitDice?: string;
+  senses: string[];
+  skills: Skill[];
+  proficiencyBonus: number;
+  proficiencies: Proficiency[];
 }
 
 interface AlchemyData {
   characterById: AlchemyCharacter;
 }
 
-interface AlchemyObject {
+export interface AlchemyObject {
   data: AlchemyData;
 }
 
@@ -47,57 +64,7 @@ interface AlchemyObject {
   providedIn: 'root',
 })
 export class CardService {
-  character = signal<AlchemyCharacter>({
-    imageUri:
-      'https://cdn.alchemyrpg.com/users/6003d6b6708dcf0008912a72/characters/08086a8d-aad1-4e86-849a-2f9eeb9ec31d/l1irviki.jpg',
-    name: 'Gallus Druid',
-    challengeRating: '4',
-    size: 'Medium',
-    type: 'Humanoid',
-    typeTags: ['Gallus'],
-    alignment: 'Any Neutral',
-    abilityScores: [
-      {
-        name: 'str' as AbilityScoreAbr,
-        value: 12,
-      },
-      {
-        name: 'dex' as AbilityScoreAbr,
-        value: 13,
-      },
-      {
-        name: 'con' as AbilityScoreAbr,
-        value: 14,
-      },
-      {
-        name: 'int' as AbilityScoreAbr,
-        value: 10,
-      },
-      {
-        name: 'wis' as AbilityScoreAbr,
-        value: 18,
-      },
-      {
-        name: 'cha' as AbilityScoreAbr,
-        value: 10,
-      },
-    ],
-    trackers: [
-      {
-        name: 'XP',
-        value: 1100,
-        category: 'experience',
-      },
-      {
-        name: 'HP',
-        value: 65,
-        category: 'health',
-      },
-    ],
-    speed: 30,
-    armorClass: 11,
-    hitDice: '10d8+20',
-  });
+  character = signal<AlchemyCharacter>(gallus);
 
   getAbilityScore = (scoreName: string): number =>
     this.character().abilityScores.find((score) => score.name === scoreName)
@@ -110,7 +77,7 @@ export class CardService {
    */
   getAbilityBonusByScoreString = (scoreName: string): string => {
     const score = this.getAbilityBonusByScore(this.getAbilityScore(scoreName));
-    return `${score >= 0 ? '+' : '-'}${score}`;
+    return `${score >= 0 ? '+' : ''}${score}`;
   };
 
   getTracker = (name: string): number =>

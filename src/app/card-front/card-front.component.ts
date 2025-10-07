@@ -1,10 +1,15 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, HostListener, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxRerenderModule } from 'ngx-rerender';
 
 import { DragDirective, FileHandle } from './dragDrop.directive';
 
-import { AbilityScoreAbr, CardService } from '../services/card/card.service';
+import {
+  AbilityScoreAbr,
+  AlchemyCharacter,
+  AlchemyObject,
+  CardService,
+} from '../services/card/card.service';
 
 @Component({
   selector: 'card-front',
@@ -33,6 +38,51 @@ export class CardFrontComponent {
       : ''
   );
 
+  senses = computed(() => {
+    return this.cardService
+      .character()
+      .skills.filter(({ name }) =>
+        ['Insight', 'Investigation', 'Perception'].includes(name)
+      )
+      .map(
+        ({ name, abilityName, proficient, doubleProficiency }) =>
+          `${name} ${
+            10 +
+            Number(
+              this.cardService.getAbilityBonusByScoreString(
+                abilityName as AbilityScoreAbr
+              )
+            ) +
+            this.cardService.character().proficiencyBonus *
+              (proficient || doubleProficiency
+                ? doubleProficiency
+                  ? 2
+                  : 1
+                : 0)
+          }`
+      )
+      .join(', ');
+  });
+
+  savingThrows = computed(() => {
+    const savingProfs = this.cardService
+      .character()
+      .proficiencies.filter((prof) => prof.type === 'save')
+      .map(
+        ({ name }) =>
+          `${name} +${
+            Number(
+              this.cardService.getAbilityBonusByScoreString(
+                name.toLocaleLowerCase().substring(0, 3) as AbilityScoreAbr
+              )
+            ) + this.cardService.character().proficiencyBonus
+          }`
+      )
+      .join(', ');
+
+    return savingProfs ?? '--';
+  });
+
   filesDropped(files: any): void {
     if (files.length > 0) {
       const file = files[0] as FileHandle;
@@ -42,6 +92,36 @@ export class CardFrontComponent {
         this.cardService.loadFromAlchemyJSON(json);
       };
       reader.readAsText(file.file);
+    }
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  async handleKeyboardEvent(event: KeyboardEvent) {
+    if ((event.metaKey || event.ctrlKey) && event.key === 'v') {
+      try {
+        if (!navigator.clipboard || !navigator.clipboard.readText) {
+          throw new Error('Clipboard API is not supported.');
+        }
+
+        const clipboardContent = await navigator.clipboard.readText();
+
+        if (!clipboardContent.trim()) {
+          console.error("Can't get clipboard value or it is empty.");
+          return;
+        }
+
+        let newCharacter: AlchemyObject;
+        try {
+          newCharacter = JSON.parse(clipboardContent);
+        } catch (parseError) {
+          console.error('JSON Parse Error:', parseError);
+          return;
+        }
+
+        this.cardService.loadFromAlchemyJSON(newCharacter);
+      } catch (err: any) {
+        console.error('Clipboard Access Error:', err);
+      }
     }
   }
 }

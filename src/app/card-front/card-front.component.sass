@@ -62,6 +62,7 @@ $back: #20222c
               line-height: 30px
               color: $body
               text-transform: uppercase
+              text-shadow: 2px 2px 4px #000000
       .ability-score-wrapper, .main-info
         display: flex
         flex-direction: row
@@ -95,3 +96,26 @@ $back: #20222c
         height: 2px
         background-color: rgb(56, 59, 69)
         margin-inline: 40px
+      .bottom-info-wrapper
+        display: flex
+        flex-direction: column
+        margin-inline: 70px
+        align-items: left
+        .info-row
+          display: flex
+          flex-direction: row
+          justify-content: flex-start
+          align-items: center
+          gap: 20px
+          .title
+            text-transform: uppercase
+            font-family: "Charter-Black"
+            font-size: 28px
+            letter-spacing: 3px
+            line-height: 50px
+            color: white
+          .value
+            font-size: 20px
+            font-family: "AvenirNext-DemiBold"
+            letter-spacing: 3px
+            color: $body
