@@ -12,11 +12,10 @@ import {
 } from '../services/card/card.service';
 
 @Component({
-  selector: 'card-front',
-  standalone: true,
-  imports: [CommonModule, DragDirective, NgxRerenderModule],
-  templateUrl: './card-front.component.html',
-  styleUrl: './card-front.component.sass',
+    selector: 'card-front',
+    imports: [CommonModule, DragDirective, NgxRerenderModule],
+    templateUrl: './card-front.component.html',
+    styleUrl: './card-front.component.sass'
 })
 export class CardFrontComponent {
   cardService = inject(CardService);

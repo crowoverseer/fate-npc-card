@@ -8,11 +8,10 @@ import { DragDirective, FileHandle } from './dragDrop.directive';
 import { AbilityScoreAbr, CardService } from '../services/card/card.service';
 
 @Component({
-  selector: 'card-back',
-  standalone: true,
-  imports: [CommonModule, DragDirective, NgxRerenderModule],
-  templateUrl: './card-back.component.html',
-  styleUrl: './card-back.component.sass',
+    selector: 'card-back',
+    imports: [CommonModule, DragDirective, NgxRerenderModule],
+    templateUrl: './card-back.component.html',
+    styleUrl: './card-back.component.sass'
 })
 export class CardBackComponent {
   cardService = inject(CardService);

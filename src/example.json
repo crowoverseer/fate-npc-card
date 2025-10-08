@@ -1,5 +1,98 @@
 {
   "data": {
+    "actionsByCharacterId": {
+        "actions": [
+            {
+                "__typename": "Action",
+                "_id": "6227f7ec68940f04f0a7aec6",
+                "sourceActionId": null,
+                "characterId": "6227f6b541524f9720020336",
+                "sortOrder": 1,
+                "name": "Staff",
+                "description": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6 + 1) bludgeoning damage.",
+                "iconUri": null,
+                "category": null,
+                "shouldOpenActionTray": false,
+                "steps": [
+                    {
+                        "name": null,
+                        "type": "custom-attack",
+                        "journalMessage": null,
+                        "journalMessageIsMarkdown": null,
+                        "journalCommand": {
+                            "command": null,
+                            "args": null
+                        },
+                        "hideRollTotal": null,
+                        "tags": [],
+                        "diceRoll": [],
+                        "attack": {
+                            "customDiceId": null,
+                            "name": "Staff",
+                            "rollsAttack": true,
+                            "ability": "dex",
+                            "skill": null,
+                            "bonus": null,
+                            "isProficient": true,
+                            "crit": 20,
+                            "damageRolls": [
+                                {
+                                    "__typename": "Damage",
+                                    "customDiceId": null,
+                                    "dice": "1d6",
+                                    "bonus": null,
+                                    "abilityName": "dex",
+                                    "skillName": null,
+                                    "type": "Bludgeoning"
+                                }
+                            ],
+                            "isRanged": false,
+                            "range": null,
+                            "longRange": null,
+                            "ammunitionId": null,
+                            "savingThrow": {
+                                "difficultyClass": null,
+                                "abilityName": null
+                            },
+                            "actionType": null,
+                            "numberOfDice": null,
+                            "numberOfFaces": null,
+                            "omitProficiencyBonus": null
+                        },
+                        "skillCheck": {
+                            "skillName": null,
+                            "rollModifier": null
+                        },
+                        "rollTable": {
+                            "tableEntries": []
+                        },
+                        "sound": {
+                            "uri": ""
+                        },
+                        "dicePool": {
+                            "__typename": "ActionStepDicePool",
+                            "customDiceId": null,
+                            "ability": null,
+                            "skill": null,
+                            "bonus": null,
+                            "numberOfDice": null,
+                            "numberOfFaces": null,
+                            "explode": null,
+                            "successValues": [],
+                            "failureValues": [],
+                            "useAbilityAndSkill": null,
+                            "canReroll": null,
+                            "rerollValues": []
+                        },
+                        "segmentedDicePool": [],
+                        "systemValues": []
+                    }
+                ]
+            }
+        ]
+    }
+  },
+  "data": {
     "characterById": {
       "__typename": "Character",
       "_id": "6227f6b541524f9720020336",

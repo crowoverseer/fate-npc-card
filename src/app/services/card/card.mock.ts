@@ -1,6 +1,7 @@
 import { AbilityScoreAbr, AlchemyCharacter } from './card.service';
 
 export const gallus: AlchemyCharacter = {
+  _id: '6227f6b541524f9720020336',
   imageUri:
     'https://cdn.alchemyrpg.com/users/6003d6b6708dcf0008912a72/characters/08086a8d-aad1-4e86-849a-2f9eeb9ec31d/l1irviki.jpg',
   name: 'Gallus Druid',
