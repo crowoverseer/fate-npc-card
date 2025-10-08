@@ -1,0 +1,43 @@
+$red: #c22f25
+$body: black
+$back: white
+
+:host
+  display: flex
+  flex-direction: column
+  background: white
+  #card-render
+    border: 4px solid white
+    .border-wrapper
+      border: 4px solid black
+      width: 1024px
+      .body
+        background-color: $back !important
+        height: 1442px
+        display: flex
+        flex-direction: column
+        justify-content: flex-start
+        gap: 30px
+      hr
+        height: 2px
+        background-color: rgb(56, 59, 69)
+        margin-inline: 40px
+      .info-row
+        display: flex
+        flex-direction: row
+        justify-content: flex-start
+        align-items: center
+        gap: 20px
+        margin-inline: 30px
+        .title
+          text-transform: uppercase
+          font-family: "Charter-Black"
+          font-size: 28px
+          letter-spacing: 3px
+          line-height: 50px
+          color: black
+        .value
+          font-size: 20px
+          font-family: "AvenirNext-DemiBold"
+          letter-spacing: 3px
+          color: $body
