@@ -33,6 +33,12 @@ interface Proficiency {
   type: 'save' | 'language';
 }
 
+interface TextBlock {
+  title?: string;
+  textBlocks?: TextBlock[];
+  body?: string;
+}
+
 export interface AlchemyCharacter {
   imageUri?: string;
   name: string;
@@ -50,6 +56,7 @@ export interface AlchemyCharacter {
   skills: Skill[];
   proficiencyBonus: number;
   proficiencies: Proficiency[];
+  textBlocks: TextBlock[];
 }
 
 interface AlchemyData {
@@ -65,6 +72,7 @@ export interface AlchemyObject {
 })
 export class CardService {
   character = signal<AlchemyCharacter>(gallus);
+  abilityFontSize = signal<number>(40);
 
   getAbilityScore = (scoreName: string): number =>
     this.character().abilityScores.find((score) => score.name === scoreName)

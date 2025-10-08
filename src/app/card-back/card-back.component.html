@@ -3,8 +3,21 @@
     <div class="body" appDrag (files)="filesDropped($event)">
       <div class="info-row">
         <label class="title">Skills</label>
-        <label class="value">XX, XX</label>
+        <label class="value">{{skillString()}}</label>
       </div>
+      <div class="info-row">
+        <label class="title">XP</label>
+        <label class="value">{{xp()}}</label>
+        <label class="title">L.</label>
+        <label class="value">{{languages()}}</label>
+      </div>
+      <hr />
+      @for( ability of abilities(); track $index ) {
+        <div class="ability">
+          <label class="title" [style.fontSize]="cardService.abilityFontSize()">{{ability.title}}: </label><label class="body">{{ability.body}}</label>
+        </div>
+      }
+      <hr />
     </div>
   </div>
 </div>

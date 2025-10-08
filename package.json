@@ -25,18 +25,18 @@
       "./electron.js"
     ],
     "win": {
-        "target": [
-            "nsis",
-            "msi"
-        ]
+      "target": [
+        "nsis",
+        "msi"
+      ]
     },
     "linux": {
-        "target": [
-            "deb",
-            "rpm",
-            "snap",
-            "AppImage"
-        ]
+      "target": [
+        "deb",
+        "rpm",
+        "snap",
+        "AppImage"
+      ]
     }
   },
   "private": true,
@@ -50,8 +50,10 @@
     "@angular/platform-browser-dynamic": "^18.1.0",
     "@angular/router": "^18.1.0",
     "@angular/service-worker": "^18.1.0",
+    "@types/lodash-es": "^4.17.12",
     "html-to-image": "^1.11.11",
     "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
     "ngx-rerender": "^1.4.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
