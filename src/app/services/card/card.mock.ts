@@ -228,4 +228,34 @@ export const gallus: AlchemyCharacter = {
       title: 'Abilities',
     },
   ],
+  conditionImmunities: ['Poisoned'],
+  damageImmunities: [
+    {
+      damageType: 'Bludgeoning',
+      condition: 'Nonmagical (excludes Silvered)',
+    },
+    {
+      damageType: 'Piercing',
+      condition: 'Nonmagical (excludes Silvered)',
+    },
+    {
+      damageType: 'Slashing',
+      condition: 'Nonmagical (excludes Silvered)',
+    },
+  ],
+  damageResistances: [
+    {
+      damageType: 'Cold',
+      condition: null,
+    },
+    {
+      damageType: 'Fire',
+      condition: null,
+    },
+    {
+      damageType: 'Lightning',
+      condition: null,
+    },
+  ],
+  damageVulnerabilities: ['Necrotic'],
 };

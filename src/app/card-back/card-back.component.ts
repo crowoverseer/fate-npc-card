@@ -8,10 +8,10 @@ import { DragDirective, FileHandle } from './dragDrop.directive';
 import { AbilityScoreAbr, CardService } from '../services/card/card.service';
 
 @Component({
-    selector: 'card-back',
-    imports: [CommonModule, DragDirective, NgxRerenderModule],
-    templateUrl: './card-back.component.html',
-    styleUrl: './card-back.component.sass'
+  selector: 'card-back',
+  imports: [CommonModule, DragDirective, NgxRerenderModule],
+  templateUrl: './card-back.component.html',
+  styleUrl: './card-back.component.sass',
 })
 export class CardBackComponent {
   cardService = inject(CardService);
@@ -22,7 +22,7 @@ export class CardBackComponent {
       .character()
       .skills.filter((skill) => skill.proficient || skill.doubleProficiency)
       .map(
-        ({ name, proficient, doubleProficiency, abilityName }) =>
+        ({ name, proficient, doubleProficiency, abilityName, bonus }) =>
           `${name} +${
             Number(
               this.cardService.getAbilityBonusByScoreString(
@@ -34,7 +34,8 @@ export class CardBackComponent {
                 ? doubleProficiency
                   ? 2
                   : 1
-                : 0)
+                : 0) +
+            (bonus ?? 0)
           }`
       )
       .join(', ')
@@ -64,6 +65,32 @@ export class CardBackComponent {
       this.cardService
         .character()
         .textBlocks.find((tb) => tb.title === 'Abilities')?.textBlocks ?? []
+  );
+
+  immunities = computed(() =>
+    [
+      ...this.cardService.character().conditionImmunities,
+      ...this.cardService
+        .character()
+        .damageImmunities.map(
+          ({ damageType, condition }) =>
+            `${damageType}${condition ? ' '.concat(condition) : ''}`
+        ),
+    ].join(', ')
+  );
+
+  resistances = computed(() =>
+    this.cardService
+      .character()
+      .damageResistances.map(
+        ({ damageType, condition }) =>
+          `${damageType}${condition ? ' '.concat(condition) : ''}`
+      )
+      .join(', ')
+  );
+
+  vulnerabilities = computed(() =>
+    [...this.cardService.character().damageVulnerabilities].join(', ')
   );
 
   filesDropped(files: any): void {

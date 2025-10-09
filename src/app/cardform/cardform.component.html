@@ -1,7 +1,14 @@
 <div class="name-and-size">
   <input
+    placeholder="40"
+    type="checkbox"
+    class="checkbox"
+    [(ngModel)]="cardService.outline"
+  />
+  <input
     placeholder="100"
     type="number"
+    [(ngModel)]="cardService.mainFontSize"
   />
   <input
     placeholder="40"

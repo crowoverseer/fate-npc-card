@@ -26,6 +26,7 @@ interface Skill {
   abilityName: AbilityScoreAbr;
   proficient: boolean;
   doubleProficiency: boolean | null;
+  bonus?: number;
 }
 
 interface Proficiency {
@@ -37,6 +38,11 @@ interface TextBlock {
   title?: string;
   textBlocks?: TextBlock[];
   body?: string;
+}
+
+interface Immunity {
+  damageType: string;
+  condition: string | null;
 }
 
 export interface AlchemyCharacter {
@@ -58,6 +64,10 @@ export interface AlchemyCharacter {
   proficiencyBonus: number;
   proficiencies: Proficiency[];
   textBlocks: TextBlock[];
+  conditionImmunities: string[];
+  damageImmunities: Immunity[];
+  damageResistances: Immunity[];
+  damageVulnerabilities: string[];
 }
 
 interface AlchemyData {
@@ -78,8 +88,11 @@ interface Action {
 })
 export class CardService {
   character = signal<AlchemyCharacter>(gallus);
-  abilityFontSize = signal<number>(20);
   actions = signal<Action[]>([]);
+
+  abilityFontSize = signal<number>(20);
+  mainFontSize = signal<number>(28);
+  outline = signal<boolean>(false);
 
   getAbilityScore = (scoreName: string): number =>
     this.character().abilityScores.find((score) => score.name === scoreName)

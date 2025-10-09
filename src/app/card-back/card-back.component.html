@@ -1,10 +1,30 @@
 <div id="card-render">
   <div class="border-wrapper">
     <div class="body" appDrag (files)="filesDropped($event)">
-      <div class="info-row">
-        <label class="title">Skills</label>
-        <label class="value">{{skillString()}}</label>
-      </div>
+      @if(skillString().length > 0) {
+        <div class="info-row">
+          <label class="title">Skills</label>
+          <label class="value">{{skillString()}}</label>
+        </div>
+      }
+      @if(immunities().length > 0) {
+        <div class="info-row">
+          <label class="title">Immunities</label>
+          <label class="value">{{immunities()}}</label>
+        </div>
+      }
+      @if(resistances().length > 0) {
+        <div class="info-row">
+          <label class="title">Resistances</label>
+          <label class="value">{{resistances()}}</label>
+        </div>
+      }
+      @if(vulnerabilities().length > 0) {
+        <div class="info-row">
+          <label class="title">Vulnerabilities</label>
+          <label class="value">{{vulnerabilities()}}</label>
+        </div>
+      }
       <div class="info-row">
         <label class="title">XP</label>
         <label class="value">{{xp()}}</label>

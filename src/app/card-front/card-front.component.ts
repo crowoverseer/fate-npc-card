@@ -12,10 +12,10 @@ import {
 } from '../services/card/card.service';
 
 @Component({
-    selector: 'card-front',
-    imports: [CommonModule, DragDirective, NgxRerenderModule],
-    templateUrl: './card-front.component.html',
-    styleUrl: './card-front.component.sass'
+  selector: 'card-front',
+  imports: [CommonModule, DragDirective, NgxRerenderModule],
+  templateUrl: './card-front.component.html',
+  styleUrl: './card-front.component.sass',
 })
 export class CardFrontComponent {
   cardService = inject(CardService);
@@ -38,29 +38,32 @@ export class CardFrontComponent {
   );
 
   senses = computed(() => {
-    return this.cardService
-      .character()
-      .skills.filter(({ name }) =>
-        ['Insight', 'Investigation', 'Perception'].includes(name)
-      )
-      .map(
-        ({ name, abilityName, proficient, doubleProficiency }) =>
-          `${name} ${
-            10 +
-            Number(
-              this.cardService.getAbilityBonusByScoreString(
-                abilityName as AbilityScoreAbr
-              )
-            ) +
-            this.cardService.character().proficiencyBonus *
-              (proficient || doubleProficiency
-                ? doubleProficiency
-                  ? 2
-                  : 1
-                : 0)
-          }`
-      )
-      .join(', ');
+    return (
+      this.cardService
+        .character()
+        .skills.filter(({ name }) =>
+          ['Insight', 'Investigation', 'Perception'].includes(name)
+        )
+        .map(
+          ({ name, abilityName, proficient, doubleProficiency, bonus }) =>
+            `${name} ${
+              10 +
+              Number(
+                this.cardService.getAbilityBonusByScoreString(
+                  abilityName as AbilityScoreAbr
+                )
+              ) +
+              this.cardService.character().proficiencyBonus *
+                (proficient || doubleProficiency
+                  ? doubleProficiency
+                    ? 2
+                    : 1
+                  : 0) +
+              (bonus ?? 0)
+            }`
+        )
+        .join(', ') || '--'
+    );
   });
 
   savingThrows = computed(() => {
@@ -79,7 +82,7 @@ export class CardFrontComponent {
       )
       .join(', ');
 
-    return savingProfs ?? '--';
+    return savingProfs || '--';
   });
 
   filesDropped(files: any): void {
