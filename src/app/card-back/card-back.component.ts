@@ -49,15 +49,16 @@ export class CardBackComponent {
       '- -'
   );
 
-  languages = computed(() =>
-    truncate(
-      this.cardService
-        .character()
-        .proficiencies.filter((prof) => prof.type === 'language')
-        .map(({ name }) => `${name}`)
-        .join(', '),
-      { length: 62 }
-    )
+  languages = computed(
+    () =>
+      truncate(
+        this.cardService
+          .character()
+          .proficiencies.filter((prof) => prof.type === 'language')
+          .map(({ name }) => `${name}`)
+          .join(', '),
+        { length: 62 }
+      ) || '--'
   );
 
   abilities = computed(

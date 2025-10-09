@@ -34,13 +34,13 @@
       <hr />
       @for( ability of abilities(); track $index ) {
         <div class="ability">
-          <label class="title" [style.fontSize]="`${cardService.abilityFontSize()}px`">{{ability.title}}: </label><label class="body" [style.fontSize]="`${cardService.abilityFontSize()}px`">{{ability.body}}</label>
+          <label class="title" [style.fontSize]="`${cardService.abilityFontSize()}px`">{{ability.title}}: </label><label class="body" [style.fontSize]="`${cardService.abilityFontSize()}px`">{{ability.body?.replaceAll('\n\n', '\n')}}</label>
         </div>
       }
       <hr />
       @for( action of cardService.actions(); track $index ) {
         <div class="ability">
-          <label class="title" [style.fontSize]="`${cardService.abilityFontSize()}px`">{{action.name}}: </label><label class="body" [style.fontSize]="`${cardService.abilityFontSize()}px`">{{action.description}}</label>
+          <label class="title" [style.fontSize]="`${cardService.abilityFontSize()}px`">{{action.name}}: </label><label class="body" [style.fontSize]="`${cardService.abilityFontSize()}px`">{{action.description.replaceAll('\n\n', '\n')}}</label>
         </div>
       }
     </div>
