@@ -7,7 +7,7 @@
   "author": "Ponomarev Leonid",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve & open -a 'Google Chrome' http://localhost:4200/",
     "electron": "electron .",
     "electron-build": "ng build && zsh ./sass-fix.zsh && electron-builder --mac",
     "build": "ng build",
