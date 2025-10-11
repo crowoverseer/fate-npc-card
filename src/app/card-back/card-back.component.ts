@@ -70,20 +70,17 @@ export class CardBackComponent {
 
   immunities = computed(() =>
     [
-      ...this.cardService.character().conditionImmunities,
-      ...this.cardService
-        .character()
-        .damageImmunities.map(
-          ({ damageType, condition }) =>
-            `${damageType}${condition ? ' '.concat(condition) : ''}`
-        ),
+      ...(this.cardService.character()?.conditionImmunities || []),
+      ...(this.cardService.character().damageImmunities || []).map(
+        ({ damageType, condition }) =>
+          `${damageType}${condition ? ' '.concat(condition) : ''}`
+      ),
     ].join(', ')
   );
 
   resistances = computed(() =>
-    this.cardService
-      .character()
-      .damageResistances.map(
+    (this.cardService.character().damageResistances || [])
+      .map(
         ({ damageType, condition }) =>
           `${damageType}${condition ? ' '.concat(condition) : ''}`
       )
@@ -91,7 +88,7 @@ export class CardBackComponent {
   );
 
   vulnerabilities = computed(() =>
-    [...this.cardService.character().damageVulnerabilities].join(', ')
+    [...(this.cardService.character().damageVulnerabilities || [])].join(', ')
   );
 
   filesDropped(files: any): void {

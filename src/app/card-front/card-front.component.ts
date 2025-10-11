@@ -27,8 +27,30 @@ export class CardFrontComponent {
     subtitle += ` ${this.cardService.character().type || ''}`;
     const tags = this.cardService.character().typeTags?.join(', ');
     subtitle += tags ? ` (${tags})` : '';
-    subtitle += ` / ${this.cardService.character().alignment || ''}`;
+    subtitle += `${
+      this.cardService.character().alignment
+        ? '/'.concat(this.cardService.character().alignment ?? '')
+        : ''
+    }`;
     return subtitle.trim();
+  });
+
+  speed = computed(() => {
+    const modes = this.cardService.character().movementModes?.length
+      ? this.cardService
+          .character()
+          .movementModes?.map((mode) => {
+            if (
+              mode.mode.toLocaleLowerCase() === 'walking' ||
+              mode.mode.toLocaleLowerCase() === 'walk'
+            ) {
+              return mode.distance;
+            }
+            return `${mode.mode} ${mode.distance}`;
+          })
+          .join(', ')
+      : '';
+    return modes || this.cardService.character().speed;
   });
 
   hitDice = computed(() =>

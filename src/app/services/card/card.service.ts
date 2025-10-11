@@ -45,6 +45,11 @@ interface Immunity {
   condition: string | null;
 }
 
+interface MovementMode {
+  mode: string;
+  distance: number;
+}
+
 export interface AlchemyCharacter {
   _id: string;
   imageUri?: string;
@@ -68,6 +73,9 @@ export interface AlchemyCharacter {
   damageImmunities: Immunity[];
   damageResistances: Immunity[];
   damageVulnerabilities: string[];
+  movementModes?: MovementMode[];
+  actions?: Action[];
+  armorType?: string;
 }
 
 interface AlchemyData {
@@ -112,13 +120,20 @@ export class CardService {
     this.character().trackers.find((tracker) => tracker.name === name)?.value ??
     0;
 
-  loadFromAlchemyJSON(json: AlchemyObject) {
-    const {
-      data: { characterById: character },
-    } = json;
+  loadFromAlchemyJSON(json: AlchemyObject | AlchemyCharacter) {
+    let character: AlchemyCharacter;
+    if ((json as AlchemyObject)?.data?.characterById) {
+      character = (json as AlchemyObject)?.data?.characterById;
+    } else {
+      character = json as AlchemyCharacter;
+    }
 
     this.character.set(character);
-    this.loadActions();
+    if (!character.actions) {
+      this.loadActions();
+    } else {
+      this.actions.set(character.actions);
+    }
   }
 
   loadActions = async () => {

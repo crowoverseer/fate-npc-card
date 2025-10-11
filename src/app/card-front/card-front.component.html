@@ -13,7 +13,7 @@
       <div class="main-info">
         <div class="score-info">
           <label class="score-name">Armor Class</label>
-          <label class="score-value">{{cardService.character().armorClass}}</label>
+          <label class="score-value">{{cardService.character().armorClass}}{{`${cardService.character().armorType ? ' '.concat(cardService.character().armorType ?? '') : ''}`}}</label>
         </div>
         <div class="score-info">
           <label class="score-name">HP</label>
@@ -21,7 +21,7 @@
         </div>
         <div class="score-info">
           <label class="score-name">Speed</label>
-          <label class="score-value">{{cardService.character().speed}}</label>
+          <label class="score-value">{{speed()}}</label>
         </div>
       </div>
       <hr />

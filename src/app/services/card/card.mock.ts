@@ -258,4 +258,14 @@ export const gallus: AlchemyCharacter = {
     },
   ],
   damageVulnerabilities: ['Necrotic'],
+  movementModes: [
+    {
+      mode: 'Walking',
+      distance: 10,
+    },
+    {
+      mode: 'Fly',
+      distance: 40,
+    },
+  ],
 };
