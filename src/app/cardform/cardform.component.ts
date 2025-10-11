@@ -12,18 +12,16 @@ import { CardService } from '../services/card/card.service';
   styleUrl: './cardform.component.sass',
 })
 export class CardformComponent {
-  name: string = 'name';
-
   public cardService = inject(CardService);
 
-  render() {
-    var card = document.getElementById('card-render');
+  renderElement = (elementId: string, prefix: string = '') => {
+    var card = document.getElementById(elementId);
     if (!card) return;
     toPng(card)
       .then((dataUrl) => {
         const link = document.createElement('a');
         link.href = dataUrl;
-        link.download = `${this.name}.png`;
+        link.download = `${this.cardService.character().name}${prefix}.png`;
         link.click();
         setTimeout(() => {
           document.removeChild(link);
@@ -32,5 +30,15 @@ export class CardformComponent {
       .catch((error) => {
         console.error('oops, something went wrong!', error);
       });
-  }
+  };
+
+  render = async () => {
+    this.renderElement('card-render-front', '-front');
+    await new Promise((res) =>
+      setTimeout(() => {
+        res(null);
+      }, 500)
+    );
+    this.renderElement('card-render-back', '-back');
+  };
 }

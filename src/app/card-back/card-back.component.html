@@ -1,6 +1,6 @@
-<div id="card-render">
+<div id="card-render-back">
   <div class="border-wrapper">
-    <div class="body" appDrag (files)="filesDropped($event)">
+    <div class="body" appDrag (files)="filesDropped($event)" contenteditable="true">
       @if(skillString().length > 0) {
         <div class="info-row">
           <label class="title">Skills</label>
