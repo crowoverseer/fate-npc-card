@@ -1,6 +1,9 @@
 <div id="card-render-back">
   <div class="border-wrapper">
     <div class="body" appDrag (files)="filesDropped($event)" contenteditable="true">
+      <div class="info-row">
+        <label class="name">{{this.cardService.character().name}}</label>
+      </div>
       @if(skillString().length > 0) {
         <div class="info-row">
           <label class="title">Skills</label>
