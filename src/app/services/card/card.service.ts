@@ -19,6 +19,7 @@ interface Tracker {
   name: string;
   value: number;
   category: string;
+  max?: number;
 }
 
 interface Skill {
